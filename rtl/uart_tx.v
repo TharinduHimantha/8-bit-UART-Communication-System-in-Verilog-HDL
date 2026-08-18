@@ -1,79 +1,111 @@
 //==============================================================================
 // Module : uart_tx
-// Purpose: Serializes one byte onto a UART TX line: start bit, 8 data bits
-//          (LSB first), stop bit. Idle line level is 1.
+// Purpose: Serializes one byte onto a UART TX line: start bit, DATA_BITS data
+//          bits (LSB first), an optional parity bit, and a stop bit. Idle
+//          line level is 1.
 //
-// FSM (4 states):
-//   S_IDLE  : tx = 1. Waiting for tx_start. Latches tx_data and, on the
-//             SAME cycle it sees tx_start, starts driving the start bit and
-//             pulses "baud_restart" so the external baud_gen begins timing
-//             this frame from a known phase.
-//   S_START : tx = 0 (start bit). Waits for one full bit period (baud_tick).
-//   S_DATA  : tx = shift_reg[bit_index]. Advances bit_index each bit period
-//             until all 8 bits (indices 0..7, LSB first) have been sent.
-//   S_STOP  : tx = 1 (stop bit). After one bit period, returns to S_IDLE and
-//             pulses tx_done for one clock cycle.
+// PHASE 2 CHANGE FROM THE EARLIER VERSION:
+//   Adds a PARITY_MODE parameter (NONE/EVEN/ODD, see rtl/uart_defs.vh) and an
+//   extra FSM state, S_PARITY, that is only entered when parity is enabled.
+//   The parity bit is calculated ONCE, at the same moment tx_data is
+//   latched (in S_IDLE, when tx_start is accepted) -- not recomputed every
+//   clock cycle while transmitting, per the assignment's guidance to avoid
+//   redundant recomputation. It is captured into parity_bit_reg alongside
+//   the data shift register.
+//
+// FSM (4 or 5 states, depending on PARITY_MODE):
+//   S_IDLE   : tx = 1. Waiting for tx_start. Latches tx_data AND the
+//              computed parity bit on the same cycle it accepts tx_start,
+//              starts driving the start bit, and pulses "baud_restart".
+//   S_START  : tx = 0 (start bit). Waits one full bit period.
+//   S_DATA   : tx = shift_reg[bit_index]. Advances through DATA_BITS bits.
+//   S_PARITY : tx = parity_bit_reg. Only entered if PARITY_MODE != NONE.
+//   S_STOP   : tx = 1 (stop bit). Returns to S_IDLE and pulses tx_done.
+//
+// Parity calculation, explained (see also docs/architecture.md Section on
+// parity):
+//   EVEN parity means the total number of 1 bits across DATA+PARITY must be
+//   even. A Verilog reduction-XOR, ^tx_data, evaluates to 1 exactly when
+//   tx_data contains an ODD number of 1 bits. So:
+//     - if tx_data already has an even number of 1s, the parity bit must be
+//       0 to keep the total even -- and ^tx_data is 0 in that case.
+//     - if tx_data has an odd number of 1s, the parity bit must be 1 to make
+//       the total even -- and ^tx_data is 1 in that case.
+//   So EVEN parity is simply: parity_bit = ^tx_data.
+//   ODD parity is the exact complement: parity_bit = ~(^tx_data).
+//   This is computed combinationally (parity_bit_comb below) purely so the
+//   register capture is a one-line, auditable assignment; it is still only
+//   ever *latched* once per frame, in S_IDLE.
 //
 // Timing:
-//   Every state transition (S_START -> S_DATA -> ... -> S_STOP -> S_IDLE)
-//   happens on a baud_tick, and baud_tick fires once every CLKS_PER_BIT
-//   system-clock cycles (see baud_gen.v). baud_restart is pulsed exactly
-//   once, on the IDLE->START transition, so the counter that produces
-//   baud_tick is phase-aligned to the start of this frame. The result is
-//   that every one of the 10 bits (start + 8 data + stop) lasts exactly
-//   CLKS_PER_BIT clock cycles -- there is no "short first bit" problem.
+//   Identical restart/tick handshake with baud_gen as the earlier version
+//   (see docs/architecture.md): baud_restart is pulsed combinationally the
+//   same cycle tx_start is accepted, so every bit -- including the start
+//   bit and, now, the parity bit -- lasts exactly CLKS_PER_BIT cycles with
+//   no phase drift.
 //
 // Common mistakes this design avoids:
-//   - Using an un-synchronized free-running baud tick: the start bit could
-//     be shortened depending on when tx_start happens to arrive, which then
-//     desynchronizes the receiver's bit-center sampling for the rest of the
-//     frame. Fixed here with baud_restart.
-//   - Changing tx_data while tx_busy is high: tx_data is only latched in
-//     S_IDLE, so it is safe (though not meaningful) for the caller to change
-//     tx_data while busy; the module simply won't look at it again until the
-//     next transmission.
-//   - Forgetting to gate tx_start with tx_busy: this module ignores tx_start
-//     while busy (S_IDLE is the only state that reacts to it), so back-to-back
-//     tx_start pulses cannot corrupt an in-progress frame.
+//   - Recomputing parity every cycle from a changing tx_data: if the caller
+//     changes tx_data mid-frame (which is otherwise harmless, see below),
+//     recomputing parity on the fly could transmit a parity bit that
+//     doesn't match the data bits actually sent. Capturing it once avoids
+//     this class of bug entirely.
+//   - Forgetting to gate the PARITY state behind PARITY_MODE: skipping
+//     straight from DATA to STOP when parity is disabled, rather than
+//     always transmitting a parity bit whether needed or not.
 //==============================================================================
 
-module uart_tx (
-    input  wire       clk,
-    input  wire       reset,       // synchronous, active-high
-    input  wire       tx_start,    // 1-cycle pulse: begin sending tx_data
-    input  wire [7:0] tx_data,
-    input  wire       baud_tick,   // from baud_gen: 1 pulse per bit period
-    output wire       baud_restart,// to baud_gen: realign counter to new frame
+`include "uart_defs.vh"
 
-    output reg        tx,          // serial output line
-    output reg        tx_busy,     // 1 while a frame is in flight
-    output reg        tx_done      // 1-cycle pulse when stop bit completes
+module uart_tx #(
+    parameter integer DATA_BITS   = 8,
+    parameter [1:0]   PARITY_MODE = `UART_PARITY_NONE
+) (
+    input  wire                  clk,
+    input  wire                  reset,       // synchronous, active-high
+    input  wire                  tx_start,    // 1-cycle pulse: begin sending tx_data
+    input  wire [DATA_BITS-1:0]  tx_data,
+    input  wire                  baud_tick,   // from baud_gen: 1 pulse per bit period
+    output wire                  baud_restart,// to baud_gen: realign counter to new frame
+
+    output reg                   tx,          // serial output line
+    output reg                   tx_busy,     // 1 while a frame is in flight
+    output reg                   tx_done      // 1-cycle pulse when stop bit completes
 );
 
-    // FSM state encoding
-    localparam [1:0] S_IDLE  = 2'd0,
-                      S_START = 2'd1,
-                      S_DATA  = 2'd2,
-                      S_STOP  = 2'd3;
+    localparam BIW = (DATA_BITS <= 1) ? 1 : $clog2(DATA_BITS); // bit_index width
 
-    reg [1:0] state;
-    reg [7:0] shift_reg;
-    reg [2:0] bit_index;
+    // FSM state encoding
+    localparam [2:0] S_IDLE   = 3'd0,
+                      S_START  = 3'd1,
+                      S_DATA   = 3'd2,
+                      S_PARITY = 3'd3,
+                      S_STOP   = 3'd4;
+
+    reg [2:0]           state;
+    reg [DATA_BITS-1:0] shift_reg;
+    reg [BIW-1:0]       bit_index;
+    reg                 parity_bit_reg;
+
+    // See header comment: EVEN parity = ^tx_data, ODD parity = ~(^tx_data).
+    // Combinational; only ever sampled into parity_bit_reg once, in S_IDLE.
+    wire parity_bit_comb = (PARITY_MODE == `UART_PARITY_ODD) ? ~(^tx_data)
+                                                               :  (^tx_data);
 
     // baud_restart must be asserted the SAME cycle tx_start is accepted
     // (not one cycle later), otherwise the start bit ends up one clock
-    // cycle too long. That is why it is combinational rather than a
-    // registered output.
+    // cycle too long (see docs/architecture.md for how this was found).
     assign baud_restart = (state == S_IDLE) && tx_start;
 
     always @(posedge clk) begin
         if (reset) begin
-            state     <= S_IDLE;
-            tx        <= 1'b1;   // idle line level
-            tx_busy   <= 1'b0;
-            tx_done   <= 1'b0;
-            shift_reg <= 8'h00;
-            bit_index <= 3'd0;
+            state          <= S_IDLE;
+            tx             <= 1'b1;   // idle line level
+            tx_busy        <= 1'b0;
+            tx_done        <= 1'b0;
+            shift_reg      <= {DATA_BITS{1'b0}};
+            bit_index      <= {BIW{1'b0}};
+            parity_bit_reg <= 1'b0;
         end else begin
             // Default: tx_done is a 1-cycle pulse, so drop it unless the
             // STOP-bit case below re-asserts it this cycle.
@@ -85,11 +117,12 @@ module uart_tx (
                     tx      <= 1'b1;
                     tx_busy <= 1'b0;
                     if (tx_start) begin
-                        shift_reg <= tx_data;
-                        tx        <= 1'b0;   // start bit begins this cycle
-                        tx_busy   <= 1'b1;
-                        bit_index <= 3'd0;
-                        state     <= S_START;
+                        shift_reg      <= tx_data;
+                        parity_bit_reg <= parity_bit_comb; // captured once
+                        tx             <= 1'b0;   // start bit begins this cycle
+                        tx_busy        <= 1'b1;
+                        bit_index      <= {BIW{1'b0}};
+                        state          <= S_START;
                     end
                 end
 
@@ -104,13 +137,26 @@ module uart_tx (
                 //--------------------------------------------------------
                 S_DATA: begin
                     if (baud_tick) begin
-                        if (bit_index == 3'd7) begin
-                            tx    <= 1'b1;    // stop bit
-                            state <= S_STOP;
+                        if (bit_index == DATA_BITS - 1) begin
+                            if (PARITY_MODE == `UART_PARITY_NONE) begin
+                                tx    <= 1'b1;      // stop bit, no parity sent
+                                state <= S_STOP;
+                            end else begin
+                                tx    <= parity_bit_reg;
+                                state <= S_PARITY;
+                            end
                         end else begin
                             bit_index <= bit_index + 1'b1;
                             tx        <= shift_reg[bit_index + 1'b1];
                         end
+                    end
+                end
+
+                //--------------------------------------------------------
+                S_PARITY: begin
+                    if (baud_tick) begin
+                        tx    <= 1'b1;   // stop bit
+                        state <= S_STOP;
                     end
                 end
 
