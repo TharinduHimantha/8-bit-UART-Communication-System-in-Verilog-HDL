@@ -1,19 +1,16 @@
 # 8-bit UART Communication System in Verilog HDL
 
+![VERILOG HDL](https://img.shields.io/badge/VERILOG-HDL-00BFFF?style=for-the-badge)
+
 A modular, synthesizable 8-bit UART transmitter/receiver written in plain
 Verilog (no SystemVerilog, no vendor primitives) — with configurable
 parity (NONE / EVEN / ODD), framing-error detection, and break-condition
 detection, verified against two independent reference models and a
 1,900+ check regression suite.
 
-![VERILOG HDL](https://img.shields.io/badge/VERILOG-HDL-00BFFF?style=for-the-badge)
-
 ![Verilog](https://img.shields.io/badge/CORE-HDL%20Verilog-2ea44f?style=for-the-badge)
 ![Protocol](https://img.shields.io/badge/Protocol-UART-ff4586?style=for-the-badge)
 ![8-bit](https://img.shields.io/badge/Data-8--Bit-brightgreen?style=for-the-badge)
-
-
-![Schematic diagram](<docs/schematic-diagram.png>)
 
 
 
@@ -44,6 +41,9 @@ Receiver/Transmitter) peripheral entirely in synthesizable Verilog:
 a baud-rate generator, a transmitter FSM, a receiver FSM, and a
 top-level module that wires them together and shares configuration
 between both directions of the link.
+
+
+![Schematic diagram](<docs/schematic-diagram.png>)
 
 It's built in two documented phases:
 
