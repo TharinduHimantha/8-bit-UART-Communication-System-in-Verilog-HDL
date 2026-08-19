@@ -13,7 +13,7 @@ detection, verified against two independent reference models and a
 ![8-bit](https://img.shields.io/badge/Data-8--Bit-brightgreen?style=for-the-badge)
 
 
-
+![Schematic diagram](<docs/schematic-diagram.png>)
 
 
 
