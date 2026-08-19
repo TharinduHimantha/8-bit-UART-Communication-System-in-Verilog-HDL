@@ -1,0 +1,1416 @@
+----------------------------------------
+UART LOOPBACK TEST (NONE / EVEN / ODD parity)
+CLK_FREQ_HZ=1000 BAUD_RATE=100 CLKS_PER_BIT=10
+----------------------------------------
+TEST 1: Reset: tx idle high (NONE)                         PASS
+TEST 2: Reset: tx idle high (EVEN)                         PASS
+TEST 3: Reset: tx idle high (ODD)                          PASS
+TEST 4: Reset: tx_busy low (NONE)                          PASS
+TEST 5: Reset: rx_busy low (NONE)                          PASS
+TEST 6: Reset: no errors asserted (EVEN)                   PASS
+TEST 7: TX idle: line stays high with no tx_start (NONE)   PASS
+TEST 8: Start bit duration+value                           PASS
+TEST 9: Data bit duration+value (LSB first)                PASS
+TEST 10: Data bit duration+value (LSB first)                PASS
+TEST 11: Data bit duration+value (LSB first)                PASS
+TEST 12: Data bit duration+value (LSB first)                PASS
+TEST 13: Data bit duration+value (LSB first)                PASS
+TEST 14: Data bit duration+value (LSB first)                PASS
+TEST 15: Data bit duration+value (LSB first)                PASS
+TEST 16: Data bit duration+value (LSB first)                PASS
+TEST 17: Stop bit duration+value                            PASS
+TEST 18: Single-byte TX->RX loopback, NONE (0xA5)           PASS  (expected 0xa5, got 0xa5)
+TEST 19: tx_busy deasserted immediately after tx_done (NONE) PASS
+TEST 20: tx_done is a single-cycle pulse (NONE)             PASS
+TEST 21: No rx_error on a clean frame (NONE)                PASS
+TEST 22: tx_busy asserted right after tx_start (NONE)       PASS
+TEST 23: tx_busy stays high mid-frame (NONE)                PASS
+TEST 24: tx_busy stays high mid-frame (NONE)                PASS
+TEST 25: tx_busy stays high mid-frame (NONE)                PASS
+TEST 26: tx_busy stays high mid-frame (NONE)                PASS
+TEST 27: tx_busy stays high mid-frame (NONE)                PASS
+TEST 28: tx_busy stays high mid-frame (NONE)                PASS
+TEST 29: tx_busy stays high mid-frame (NONE)                PASS
+TEST 30: tx_busy stays high mid-frame (NONE)                PASS
+TEST 31: tx_busy stays high mid-frame (NONE)                PASS
+TEST 32: tx_busy stays high mid-frame (NONE)                PASS
+TEST 33: tx_busy stays high mid-frame (NONE)                PASS
+TEST 34: tx_busy stays high mid-frame (NONE)                PASS
+TEST 35: tx_busy stays high mid-frame (NONE)                PASS
+TEST 36: tx_busy stays high mid-frame (NONE)                PASS
+TEST 37: tx_busy stays high mid-frame (NONE)                PASS
+TEST 38: tx_busy stays high mid-frame (NONE)                PASS
+TEST 39: tx_busy stays high mid-frame (NONE)                PASS
+TEST 40: tx_busy stays high mid-frame (NONE)                PASS
+TEST 41: tx_busy stays high mid-frame (NONE)                PASS
+TEST 42: tx_busy stays high mid-frame (NONE)                PASS
+TEST 43: tx_busy stays high mid-frame (NONE)                PASS
+TEST 44: tx_busy stays high mid-frame (NONE)                PASS
+TEST 45: tx_busy stays high mid-frame (NONE)                PASS
+TEST 46: tx_busy stays high mid-frame (NONE)                PASS
+TEST 47: tx_busy stays high mid-frame (NONE)                PASS
+TEST 48: tx_busy stays high mid-frame (NONE)                PASS
+TEST 49: tx_busy stays high mid-frame (NONE)                PASS
+TEST 50: tx_busy stays high mid-frame (NONE)                PASS
+TEST 51: tx_busy stays high mid-frame (NONE)                PASS
+TEST 52: tx_busy stays high mid-frame (NONE)                PASS
+TEST 53: tx_busy stays high mid-frame (NONE)                PASS
+TEST 54: tx_busy stays high mid-frame (NONE)                PASS
+TEST 55: tx_busy stays high mid-frame (NONE)                PASS
+TEST 56: tx_busy stays high mid-frame (NONE)                PASS
+TEST 57: tx_busy stays high mid-frame (NONE)                PASS
+TEST 58: tx_busy stays high mid-frame (NONE)                PASS
+TEST 59: tx_busy stays high mid-frame (NONE)                PASS
+TEST 60: tx_busy stays high mid-frame (NONE)                PASS
+TEST 61: tx_busy stays high mid-frame (NONE)                PASS
+TEST 62: tx_busy stays high mid-frame (NONE)                PASS
+TEST 63: tx_busy stays high mid-frame (NONE)                PASS
+TEST 64: tx_busy stays high mid-frame (NONE)                PASS
+TEST 65: tx_busy stays high mid-frame (NONE)                PASS
+TEST 66: tx_busy stays high mid-frame (NONE)                PASS
+TEST 67: tx_busy stays high mid-frame (NONE)                PASS
+TEST 68: tx_busy stays high mid-frame (NONE)                PASS
+TEST 69: tx_busy stays high mid-frame (NONE)                PASS
+TEST 70: tx_busy stays high mid-frame (NONE)                PASS
+TEST 71: tx_busy stays high mid-frame (NONE)                PASS
+TEST 72: tx_busy stays high mid-frame (NONE)                PASS
+TEST 73: Loopback after busy-timing check (NONE, 0x3C)      PASS  (expected 0x3c, got 0x3c)
+TEST 74: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x00, got 0x00)
+TEST 75: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x01, got 0x01)
+TEST 76: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x02, got 0x02)
+TEST 77: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x03, got 0x03)
+TEST 78: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x04, got 0x04)
+TEST 79: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x05, got 0x05)
+TEST 80: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x06, got 0x06)
+TEST 81: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x07, got 0x07)
+TEST 82: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x08, got 0x08)
+TEST 83: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x09, got 0x09)
+TEST 84: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x0a, got 0x0a)
+TEST 85: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x0b, got 0x0b)
+TEST 86: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x0c, got 0x0c)
+TEST 87: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x0d, got 0x0d)
+TEST 88: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x0e, got 0x0e)
+TEST 89: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x0f, got 0x0f)
+TEST 90: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x10, got 0x10)
+TEST 91: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x11, got 0x11)
+TEST 92: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x12, got 0x12)
+TEST 93: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x13, got 0x13)
+TEST 94: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x14, got 0x14)
+TEST 95: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x15, got 0x15)
+TEST 96: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x16, got 0x16)
+TEST 97: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x17, got 0x17)
+TEST 98: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x18, got 0x18)
+TEST 99: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x19, got 0x19)
+TEST 100: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x1a, got 0x1a)
+TEST 101: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x1b, got 0x1b)
+TEST 102: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x1c, got 0x1c)
+TEST 103: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x1d, got 0x1d)
+TEST 104: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x1e, got 0x1e)
+TEST 105: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x1f, got 0x1f)
+TEST 106: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x20, got 0x20)
+TEST 107: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x21, got 0x21)
+TEST 108: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x22, got 0x22)
+TEST 109: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x23, got 0x23)
+TEST 110: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x24, got 0x24)
+TEST 111: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x25, got 0x25)
+TEST 112: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x26, got 0x26)
+TEST 113: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x27, got 0x27)
+TEST 114: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x28, got 0x28)
+TEST 115: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x29, got 0x29)
+TEST 116: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x2a, got 0x2a)
+TEST 117: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x2b, got 0x2b)
+TEST 118: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x2c, got 0x2c)
+TEST 119: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x2d, got 0x2d)
+TEST 120: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x2e, got 0x2e)
+TEST 121: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x2f, got 0x2f)
+TEST 122: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x30, got 0x30)
+TEST 123: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x31, got 0x31)
+TEST 124: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x32, got 0x32)
+TEST 125: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x33, got 0x33)
+TEST 126: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x34, got 0x34)
+TEST 127: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x35, got 0x35)
+TEST 128: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x36, got 0x36)
+TEST 129: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x37, got 0x37)
+TEST 130: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x38, got 0x38)
+TEST 131: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x39, got 0x39)
+TEST 132: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x3a, got 0x3a)
+TEST 133: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x3b, got 0x3b)
+TEST 134: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x3c, got 0x3c)
+TEST 135: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x3d, got 0x3d)
+TEST 136: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x3e, got 0x3e)
+TEST 137: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x3f, got 0x3f)
+TEST 138: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x40, got 0x40)
+TEST 139: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x41, got 0x41)
+TEST 140: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x42, got 0x42)
+TEST 141: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x43, got 0x43)
+TEST 142: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x44, got 0x44)
+TEST 143: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x45, got 0x45)
+TEST 144: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x46, got 0x46)
+TEST 145: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x47, got 0x47)
+TEST 146: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x48, got 0x48)
+TEST 147: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x49, got 0x49)
+TEST 148: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x4a, got 0x4a)
+TEST 149: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x4b, got 0x4b)
+TEST 150: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x4c, got 0x4c)
+TEST 151: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x4d, got 0x4d)
+TEST 152: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x4e, got 0x4e)
+TEST 153: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x4f, got 0x4f)
+TEST 154: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x50, got 0x50)
+TEST 155: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x51, got 0x51)
+TEST 156: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x52, got 0x52)
+TEST 157: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x53, got 0x53)
+TEST 158: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x54, got 0x54)
+TEST 159: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x55, got 0x55)
+TEST 160: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x56, got 0x56)
+TEST 161: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x57, got 0x57)
+TEST 162: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x58, got 0x58)
+TEST 163: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x59, got 0x59)
+TEST 164: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x5a, got 0x5a)
+TEST 165: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x5b, got 0x5b)
+TEST 166: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x5c, got 0x5c)
+TEST 167: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x5d, got 0x5d)
+TEST 168: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x5e, got 0x5e)
+TEST 169: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x5f, got 0x5f)
+TEST 170: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x60, got 0x60)
+TEST 171: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x61, got 0x61)
+TEST 172: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x62, got 0x62)
+TEST 173: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x63, got 0x63)
+TEST 174: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x64, got 0x64)
+TEST 175: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x65, got 0x65)
+TEST 176: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x66, got 0x66)
+TEST 177: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x67, got 0x67)
+TEST 178: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x68, got 0x68)
+TEST 179: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x69, got 0x69)
+TEST 180: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x6a, got 0x6a)
+TEST 181: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x6b, got 0x6b)
+TEST 182: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x6c, got 0x6c)
+TEST 183: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x6d, got 0x6d)
+TEST 184: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x6e, got 0x6e)
+TEST 185: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x6f, got 0x6f)
+TEST 186: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x70, got 0x70)
+TEST 187: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x71, got 0x71)
+TEST 188: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x72, got 0x72)
+TEST 189: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x73, got 0x73)
+TEST 190: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x74, got 0x74)
+TEST 191: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x75, got 0x75)
+TEST 192: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x76, got 0x76)
+TEST 193: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x77, got 0x77)
+TEST 194: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x78, got 0x78)
+TEST 195: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x79, got 0x79)
+TEST 196: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x7a, got 0x7a)
+TEST 197: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x7b, got 0x7b)
+TEST 198: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x7c, got 0x7c)
+TEST 199: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x7d, got 0x7d)
+TEST 200: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x7e, got 0x7e)
+TEST 201: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x7f, got 0x7f)
+TEST 202: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x80, got 0x80)
+TEST 203: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x81, got 0x81)
+TEST 204: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x82, got 0x82)
+TEST 205: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x83, got 0x83)
+TEST 206: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x84, got 0x84)
+TEST 207: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x85, got 0x85)
+TEST 208: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x86, got 0x86)
+TEST 209: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x87, got 0x87)
+TEST 210: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x88, got 0x88)
+TEST 211: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x89, got 0x89)
+TEST 212: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x8a, got 0x8a)
+TEST 213: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x8b, got 0x8b)
+TEST 214: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x8c, got 0x8c)
+TEST 215: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x8d, got 0x8d)
+TEST 216: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x8e, got 0x8e)
+TEST 217: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x8f, got 0x8f)
+TEST 218: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x90, got 0x90)
+TEST 219: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x91, got 0x91)
+TEST 220: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x92, got 0x92)
+TEST 221: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x93, got 0x93)
+TEST 222: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x94, got 0x94)
+TEST 223: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x95, got 0x95)
+TEST 224: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x96, got 0x96)
+TEST 225: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x97, got 0x97)
+TEST 226: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x98, got 0x98)
+TEST 227: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x99, got 0x99)
+TEST 228: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x9a, got 0x9a)
+TEST 229: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x9b, got 0x9b)
+TEST 230: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x9c, got 0x9c)
+TEST 231: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x9d, got 0x9d)
+TEST 232: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x9e, got 0x9e)
+TEST 233: 0x00-0xFF sweep (NONE)                             PASS  (expected 0x9f, got 0x9f)
+TEST 234: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa0, got 0xa0)
+TEST 235: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa1, got 0xa1)
+TEST 236: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa2, got 0xa2)
+TEST 237: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa3, got 0xa3)
+TEST 238: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa4, got 0xa4)
+TEST 239: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa5, got 0xa5)
+TEST 240: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa6, got 0xa6)
+TEST 241: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa7, got 0xa7)
+TEST 242: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa8, got 0xa8)
+TEST 243: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xa9, got 0xa9)
+TEST 244: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xaa, got 0xaa)
+TEST 245: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xab, got 0xab)
+TEST 246: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xac, got 0xac)
+TEST 247: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xad, got 0xad)
+TEST 248: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xae, got 0xae)
+TEST 249: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xaf, got 0xaf)
+TEST 250: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb0, got 0xb0)
+TEST 251: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb1, got 0xb1)
+TEST 252: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb2, got 0xb2)
+TEST 253: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb3, got 0xb3)
+TEST 254: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb4, got 0xb4)
+TEST 255: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb5, got 0xb5)
+TEST 256: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb6, got 0xb6)
+TEST 257: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb7, got 0xb7)
+TEST 258: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb8, got 0xb8)
+TEST 259: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xb9, got 0xb9)
+TEST 260: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xba, got 0xba)
+TEST 261: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xbb, got 0xbb)
+TEST 262: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xbc, got 0xbc)
+TEST 263: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xbd, got 0xbd)
+TEST 264: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xbe, got 0xbe)
+TEST 265: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xbf, got 0xbf)
+TEST 266: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc0, got 0xc0)
+TEST 267: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc1, got 0xc1)
+TEST 268: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc2, got 0xc2)
+TEST 269: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc3, got 0xc3)
+TEST 270: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc4, got 0xc4)
+TEST 271: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc5, got 0xc5)
+TEST 272: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc6, got 0xc6)
+TEST 273: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc7, got 0xc7)
+TEST 274: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc8, got 0xc8)
+TEST 275: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xc9, got 0xc9)
+TEST 276: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xca, got 0xca)
+TEST 277: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xcb, got 0xcb)
+TEST 278: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xcc, got 0xcc)
+TEST 279: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xcd, got 0xcd)
+TEST 280: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xce, got 0xce)
+TEST 281: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xcf, got 0xcf)
+TEST 282: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd0, got 0xd0)
+TEST 283: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd1, got 0xd1)
+TEST 284: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd2, got 0xd2)
+TEST 285: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd3, got 0xd3)
+TEST 286: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd4, got 0xd4)
+TEST 287: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd5, got 0xd5)
+TEST 288: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd6, got 0xd6)
+TEST 289: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd7, got 0xd7)
+TEST 290: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd8, got 0xd8)
+TEST 291: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xd9, got 0xd9)
+TEST 292: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xda, got 0xda)
+TEST 293: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xdb, got 0xdb)
+TEST 294: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xdc, got 0xdc)
+TEST 295: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xdd, got 0xdd)
+TEST 296: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xde, got 0xde)
+TEST 297: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xdf, got 0xdf)
+TEST 298: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe0, got 0xe0)
+TEST 299: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe1, got 0xe1)
+TEST 300: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe2, got 0xe2)
+TEST 301: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe3, got 0xe3)
+TEST 302: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe4, got 0xe4)
+TEST 303: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe5, got 0xe5)
+TEST 304: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe6, got 0xe6)
+TEST 305: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe7, got 0xe7)
+TEST 306: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe8, got 0xe8)
+TEST 307: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xe9, got 0xe9)
+TEST 308: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xea, got 0xea)
+TEST 309: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xeb, got 0xeb)
+TEST 310: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xec, got 0xec)
+TEST 311: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xed, got 0xed)
+TEST 312: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xee, got 0xee)
+TEST 313: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xef, got 0xef)
+TEST 314: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf0, got 0xf0)
+TEST 315: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf1, got 0xf1)
+TEST 316: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf2, got 0xf2)
+TEST 317: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf3, got 0xf3)
+TEST 318: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf4, got 0xf4)
+TEST 319: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf5, got 0xf5)
+TEST 320: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf6, got 0xf6)
+TEST 321: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf7, got 0xf7)
+TEST 322: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf8, got 0xf8)
+TEST 323: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xf9, got 0xf9)
+TEST 324: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xfa, got 0xfa)
+TEST 325: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xfb, got 0xfb)
+TEST 326: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xfc, got 0xfc)
+TEST 327: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xfd, got 0xfd)
+TEST 328: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xfe, got 0xfe)
+TEST 329: 0x00-0xFF sweep (NONE)                             PASS  (expected 0xff, got 0xff)
+TEST 330: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x00, got 0x00)
+TEST 331: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 332: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x01, got 0x01)
+TEST 333: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 334: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x02, got 0x02)
+TEST 335: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 336: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x03, got 0x03)
+TEST 337: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 338: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x04, got 0x04)
+TEST 339: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 340: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x05, got 0x05)
+TEST 341: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 342: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x06, got 0x06)
+TEST 343: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 344: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x07, got 0x07)
+TEST 345: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 346: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x08, got 0x08)
+TEST 347: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 348: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x09, got 0x09)
+TEST 349: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 350: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x0a, got 0x0a)
+TEST 351: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 352: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x0b, got 0x0b)
+TEST 353: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 354: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x0c, got 0x0c)
+TEST 355: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 356: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x0d, got 0x0d)
+TEST 357: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 358: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x0e, got 0x0e)
+TEST 359: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 360: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x0f, got 0x0f)
+TEST 361: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 362: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x10, got 0x10)
+TEST 363: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 364: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x11, got 0x11)
+TEST 365: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 366: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x12, got 0x12)
+TEST 367: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 368: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x13, got 0x13)
+TEST 369: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 370: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x14, got 0x14)
+TEST 371: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 372: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x15, got 0x15)
+TEST 373: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 374: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x16, got 0x16)
+TEST 375: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 376: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x17, got 0x17)
+TEST 377: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 378: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x18, got 0x18)
+TEST 379: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 380: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x19, got 0x19)
+TEST 381: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 382: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x1a, got 0x1a)
+TEST 383: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 384: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x1b, got 0x1b)
+TEST 385: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 386: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x1c, got 0x1c)
+TEST 387: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 388: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x1d, got 0x1d)
+TEST 389: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 390: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x1e, got 0x1e)
+TEST 391: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 392: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x1f, got 0x1f)
+TEST 393: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 394: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x20, got 0x20)
+TEST 395: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 396: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x21, got 0x21)
+TEST 397: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 398: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x22, got 0x22)
+TEST 399: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 400: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x23, got 0x23)
+TEST 401: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 402: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x24, got 0x24)
+TEST 403: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 404: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x25, got 0x25)
+TEST 405: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 406: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x26, got 0x26)
+TEST 407: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 408: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x27, got 0x27)
+TEST 409: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 410: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x28, got 0x28)
+TEST 411: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 412: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x29, got 0x29)
+TEST 413: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 414: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x2a, got 0x2a)
+TEST 415: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 416: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x2b, got 0x2b)
+TEST 417: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 418: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x2c, got 0x2c)
+TEST 419: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 420: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x2d, got 0x2d)
+TEST 421: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 422: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x2e, got 0x2e)
+TEST 423: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 424: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x2f, got 0x2f)
+TEST 425: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 426: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x30, got 0x30)
+TEST 427: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 428: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x31, got 0x31)
+TEST 429: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 430: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x32, got 0x32)
+TEST 431: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 432: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x33, got 0x33)
+TEST 433: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 434: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x34, got 0x34)
+TEST 435: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 436: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x35, got 0x35)
+TEST 437: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 438: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x36, got 0x36)
+TEST 439: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 440: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x37, got 0x37)
+TEST 441: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 442: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x38, got 0x38)
+TEST 443: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 444: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x39, got 0x39)
+TEST 445: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 446: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x3a, got 0x3a)
+TEST 447: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 448: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x3b, got 0x3b)
+TEST 449: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 450: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x3c, got 0x3c)
+TEST 451: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 452: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x3d, got 0x3d)
+TEST 453: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 454: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x3e, got 0x3e)
+TEST 455: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 456: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x3f, got 0x3f)
+TEST 457: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 458: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x40, got 0x40)
+TEST 459: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 460: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x41, got 0x41)
+TEST 461: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 462: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x42, got 0x42)
+TEST 463: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 464: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x43, got 0x43)
+TEST 465: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 466: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x44, got 0x44)
+TEST 467: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 468: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x45, got 0x45)
+TEST 469: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 470: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x46, got 0x46)
+TEST 471: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 472: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x47, got 0x47)
+TEST 473: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 474: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x48, got 0x48)
+TEST 475: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 476: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x49, got 0x49)
+TEST 477: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 478: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x4a, got 0x4a)
+TEST 479: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 480: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x4b, got 0x4b)
+TEST 481: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 482: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x4c, got 0x4c)
+TEST 483: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 484: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x4d, got 0x4d)
+TEST 485: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 486: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x4e, got 0x4e)
+TEST 487: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 488: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x4f, got 0x4f)
+TEST 489: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 490: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x50, got 0x50)
+TEST 491: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 492: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x51, got 0x51)
+TEST 493: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 494: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x52, got 0x52)
+TEST 495: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 496: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x53, got 0x53)
+TEST 497: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 498: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x54, got 0x54)
+TEST 499: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 500: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x55, got 0x55)
+TEST 501: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 502: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x56, got 0x56)
+TEST 503: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 504: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x57, got 0x57)
+TEST 505: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 506: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x58, got 0x58)
+TEST 507: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 508: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x59, got 0x59)
+TEST 509: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 510: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x5a, got 0x5a)
+TEST 511: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 512: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x5b, got 0x5b)
+TEST 513: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 514: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x5c, got 0x5c)
+TEST 515: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 516: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x5d, got 0x5d)
+TEST 517: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 518: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x5e, got 0x5e)
+TEST 519: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 520: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x5f, got 0x5f)
+TEST 521: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 522: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x60, got 0x60)
+TEST 523: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 524: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x61, got 0x61)
+TEST 525: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 526: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x62, got 0x62)
+TEST 527: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 528: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x63, got 0x63)
+TEST 529: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 530: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x64, got 0x64)
+TEST 531: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 532: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x65, got 0x65)
+TEST 533: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 534: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x66, got 0x66)
+TEST 535: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 536: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x67, got 0x67)
+TEST 537: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 538: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x68, got 0x68)
+TEST 539: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 540: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x69, got 0x69)
+TEST 541: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 542: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x6a, got 0x6a)
+TEST 543: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 544: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x6b, got 0x6b)
+TEST 545: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 546: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x6c, got 0x6c)
+TEST 547: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 548: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x6d, got 0x6d)
+TEST 549: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 550: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x6e, got 0x6e)
+TEST 551: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 552: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x6f, got 0x6f)
+TEST 553: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 554: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x70, got 0x70)
+TEST 555: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 556: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x71, got 0x71)
+TEST 557: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 558: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x72, got 0x72)
+TEST 559: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 560: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x73, got 0x73)
+TEST 561: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 562: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x74, got 0x74)
+TEST 563: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 564: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x75, got 0x75)
+TEST 565: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 566: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x76, got 0x76)
+TEST 567: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 568: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x77, got 0x77)
+TEST 569: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 570: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x78, got 0x78)
+TEST 571: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 572: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x79, got 0x79)
+TEST 573: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 574: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x7a, got 0x7a)
+TEST 575: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 576: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x7b, got 0x7b)
+TEST 577: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 578: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x7c, got 0x7c)
+TEST 579: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 580: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x7d, got 0x7d)
+TEST 581: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 582: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x7e, got 0x7e)
+TEST 583: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 584: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x7f, got 0x7f)
+TEST 585: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 586: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x80, got 0x80)
+TEST 587: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 588: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x81, got 0x81)
+TEST 589: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 590: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x82, got 0x82)
+TEST 591: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 592: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x83, got 0x83)
+TEST 593: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 594: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x84, got 0x84)
+TEST 595: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 596: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x85, got 0x85)
+TEST 597: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 598: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x86, got 0x86)
+TEST 599: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 600: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x87, got 0x87)
+TEST 601: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 602: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x88, got 0x88)
+TEST 603: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 604: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x89, got 0x89)
+TEST 605: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 606: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x8a, got 0x8a)
+TEST 607: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 608: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x8b, got 0x8b)
+TEST 609: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 610: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x8c, got 0x8c)
+TEST 611: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 612: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x8d, got 0x8d)
+TEST 613: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 614: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x8e, got 0x8e)
+TEST 615: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 616: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x8f, got 0x8f)
+TEST 617: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 618: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x90, got 0x90)
+TEST 619: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 620: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x91, got 0x91)
+TEST 621: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 622: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x92, got 0x92)
+TEST 623: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 624: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x93, got 0x93)
+TEST 625: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 626: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x94, got 0x94)
+TEST 627: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 628: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x95, got 0x95)
+TEST 629: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 630: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x96, got 0x96)
+TEST 631: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 632: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x97, got 0x97)
+TEST 633: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 634: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x98, got 0x98)
+TEST 635: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 636: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x99, got 0x99)
+TEST 637: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 638: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x9a, got 0x9a)
+TEST 639: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 640: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x9b, got 0x9b)
+TEST 641: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 642: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x9c, got 0x9c)
+TEST 643: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 644: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x9d, got 0x9d)
+TEST 645: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 646: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x9e, got 0x9e)
+TEST 647: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 648: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0x9f, got 0x9f)
+TEST 649: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 650: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa0, got 0xa0)
+TEST 651: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 652: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa1, got 0xa1)
+TEST 653: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 654: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa2, got 0xa2)
+TEST 655: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 656: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa3, got 0xa3)
+TEST 657: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 658: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa4, got 0xa4)
+TEST 659: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 660: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa5, got 0xa5)
+TEST 661: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 662: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa6, got 0xa6)
+TEST 663: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 664: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa7, got 0xa7)
+TEST 665: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 666: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa8, got 0xa8)
+TEST 667: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 668: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xa9, got 0xa9)
+TEST 669: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 670: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xaa, got 0xaa)
+TEST 671: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 672: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xab, got 0xab)
+TEST 673: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 674: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xac, got 0xac)
+TEST 675: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 676: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xad, got 0xad)
+TEST 677: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 678: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xae, got 0xae)
+TEST 679: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 680: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xaf, got 0xaf)
+TEST 681: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 682: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb0, got 0xb0)
+TEST 683: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 684: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb1, got 0xb1)
+TEST 685: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 686: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb2, got 0xb2)
+TEST 687: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 688: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb3, got 0xb3)
+TEST 689: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 690: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb4, got 0xb4)
+TEST 691: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 692: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb5, got 0xb5)
+TEST 693: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 694: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb6, got 0xb6)
+TEST 695: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 696: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb7, got 0xb7)
+TEST 697: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 698: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb8, got 0xb8)
+TEST 699: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 700: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xb9, got 0xb9)
+TEST 701: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 702: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xba, got 0xba)
+TEST 703: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 704: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xbb, got 0xbb)
+TEST 705: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 706: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xbc, got 0xbc)
+TEST 707: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 708: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xbd, got 0xbd)
+TEST 709: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 710: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xbe, got 0xbe)
+TEST 711: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 712: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xbf, got 0xbf)
+TEST 713: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 714: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc0, got 0xc0)
+TEST 715: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 716: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc1, got 0xc1)
+TEST 717: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 718: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc2, got 0xc2)
+TEST 719: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 720: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc3, got 0xc3)
+TEST 721: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 722: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc4, got 0xc4)
+TEST 723: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 724: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc5, got 0xc5)
+TEST 725: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 726: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc6, got 0xc6)
+TEST 727: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 728: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc7, got 0xc7)
+TEST 729: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 730: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc8, got 0xc8)
+TEST 731: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 732: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xc9, got 0xc9)
+TEST 733: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 734: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xca, got 0xca)
+TEST 735: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 736: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xcb, got 0xcb)
+TEST 737: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 738: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xcc, got 0xcc)
+TEST 739: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 740: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xcd, got 0xcd)
+TEST 741: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 742: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xce, got 0xce)
+TEST 743: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 744: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xcf, got 0xcf)
+TEST 745: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 746: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd0, got 0xd0)
+TEST 747: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 748: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd1, got 0xd1)
+TEST 749: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 750: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd2, got 0xd2)
+TEST 751: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 752: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd3, got 0xd3)
+TEST 753: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 754: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd4, got 0xd4)
+TEST 755: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 756: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd5, got 0xd5)
+TEST 757: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 758: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd6, got 0xd6)
+TEST 759: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 760: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd7, got 0xd7)
+TEST 761: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 762: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd8, got 0xd8)
+TEST 763: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 764: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xd9, got 0xd9)
+TEST 765: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 766: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xda, got 0xda)
+TEST 767: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 768: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xdb, got 0xdb)
+TEST 769: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 770: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xdc, got 0xdc)
+TEST 771: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 772: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xdd, got 0xdd)
+TEST 773: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 774: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xde, got 0xde)
+TEST 775: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 776: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xdf, got 0xdf)
+TEST 777: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 778: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe0, got 0xe0)
+TEST 779: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 780: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe1, got 0xe1)
+TEST 781: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 782: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe2, got 0xe2)
+TEST 783: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 784: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe3, got 0xe3)
+TEST 785: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 786: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe4, got 0xe4)
+TEST 787: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 788: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe5, got 0xe5)
+TEST 789: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 790: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe6, got 0xe6)
+TEST 791: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 792: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe7, got 0xe7)
+TEST 793: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 794: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe8, got 0xe8)
+TEST 795: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 796: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xe9, got 0xe9)
+TEST 797: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 798: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xea, got 0xea)
+TEST 799: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 800: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xeb, got 0xeb)
+TEST 801: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 802: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xec, got 0xec)
+TEST 803: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 804: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xed, got 0xed)
+TEST 805: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 806: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xee, got 0xee)
+TEST 807: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 808: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xef, got 0xef)
+TEST 809: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 810: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf0, got 0xf0)
+TEST 811: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 812: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf1, got 0xf1)
+TEST 813: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 814: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf2, got 0xf2)
+TEST 815: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 816: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf3, got 0xf3)
+TEST 817: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 818: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf4, got 0xf4)
+TEST 819: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 820: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf5, got 0xf5)
+TEST 821: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 822: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf6, got 0xf6)
+TEST 823: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 824: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf7, got 0xf7)
+TEST 825: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 826: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf8, got 0xf8)
+TEST 827: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 828: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xf9, got 0xf9)
+TEST 829: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 830: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xfa, got 0xfa)
+TEST 831: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 832: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xfb, got 0xfb)
+TEST 833: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 834: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xfc, got 0xfc)
+TEST 835: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 836: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xfd, got 0xfd)
+TEST 837: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 838: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xfe, got 0xfe)
+TEST 839: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 840: 0x00-0xFF sweep (EVEN)                             PASS  (expected 0xff, got 0xff)
+TEST 841: 0x00-0xFF sweep (EVEN) -> no parity_error          PASS
+TEST 842: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x00, got 0x00)
+TEST 843: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 844: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x01, got 0x01)
+TEST 845: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 846: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x02, got 0x02)
+TEST 847: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 848: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x03, got 0x03)
+TEST 849: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 850: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x04, got 0x04)
+TEST 851: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 852: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x05, got 0x05)
+TEST 853: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 854: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x06, got 0x06)
+TEST 855: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 856: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x07, got 0x07)
+TEST 857: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 858: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x08, got 0x08)
+TEST 859: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 860: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x09, got 0x09)
+TEST 861: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 862: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x0a, got 0x0a)
+TEST 863: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 864: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x0b, got 0x0b)
+TEST 865: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 866: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x0c, got 0x0c)
+TEST 867: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 868: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x0d, got 0x0d)
+TEST 869: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 870: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x0e, got 0x0e)
+TEST 871: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 872: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x0f, got 0x0f)
+TEST 873: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 874: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x10, got 0x10)
+TEST 875: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 876: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x11, got 0x11)
+TEST 877: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 878: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x12, got 0x12)
+TEST 879: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 880: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x13, got 0x13)
+TEST 881: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 882: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x14, got 0x14)
+TEST 883: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 884: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x15, got 0x15)
+TEST 885: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 886: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x16, got 0x16)
+TEST 887: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 888: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x17, got 0x17)
+TEST 889: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 890: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x18, got 0x18)
+TEST 891: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 892: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x19, got 0x19)
+TEST 893: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 894: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x1a, got 0x1a)
+TEST 895: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 896: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x1b, got 0x1b)
+TEST 897: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 898: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x1c, got 0x1c)
+TEST 899: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 900: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x1d, got 0x1d)
+TEST 901: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 902: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x1e, got 0x1e)
+TEST 903: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 904: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x1f, got 0x1f)
+TEST 905: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 906: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x20, got 0x20)
+TEST 907: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 908: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x21, got 0x21)
+TEST 909: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 910: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x22, got 0x22)
+TEST 911: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 912: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x23, got 0x23)
+TEST 913: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 914: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x24, got 0x24)
+TEST 915: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 916: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x25, got 0x25)
+TEST 917: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 918: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x26, got 0x26)
+TEST 919: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 920: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x27, got 0x27)
+TEST 921: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 922: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x28, got 0x28)
+TEST 923: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 924: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x29, got 0x29)
+TEST 925: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 926: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x2a, got 0x2a)
+TEST 927: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 928: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x2b, got 0x2b)
+TEST 929: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 930: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x2c, got 0x2c)
+TEST 931: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 932: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x2d, got 0x2d)
+TEST 933: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 934: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x2e, got 0x2e)
+TEST 935: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 936: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x2f, got 0x2f)
+TEST 937: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 938: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x30, got 0x30)
+TEST 939: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 940: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x31, got 0x31)
+TEST 941: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 942: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x32, got 0x32)
+TEST 943: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 944: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x33, got 0x33)
+TEST 945: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 946: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x34, got 0x34)
+TEST 947: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 948: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x35, got 0x35)
+TEST 949: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 950: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x36, got 0x36)
+TEST 951: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 952: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x37, got 0x37)
+TEST 953: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 954: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x38, got 0x38)
+TEST 955: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 956: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x39, got 0x39)
+TEST 957: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 958: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x3a, got 0x3a)
+TEST 959: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 960: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x3b, got 0x3b)
+TEST 961: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 962: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x3c, got 0x3c)
+TEST 963: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 964: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x3d, got 0x3d)
+TEST 965: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 966: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x3e, got 0x3e)
+TEST 967: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 968: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x3f, got 0x3f)
+TEST 969: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 970: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x40, got 0x40)
+TEST 971: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 972: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x41, got 0x41)
+TEST 973: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 974: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x42, got 0x42)
+TEST 975: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 976: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x43, got 0x43)
+TEST 977: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 978: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x44, got 0x44)
+TEST 979: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 980: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x45, got 0x45)
+TEST 981: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 982: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x46, got 0x46)
+TEST 983: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 984: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x47, got 0x47)
+TEST 985: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 986: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x48, got 0x48)
+TEST 987: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 988: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x49, got 0x49)
+TEST 989: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 990: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x4a, got 0x4a)
+TEST 991: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 992: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x4b, got 0x4b)
+TEST 993: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 994: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x4c, got 0x4c)
+TEST 995: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 996: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x4d, got 0x4d)
+TEST 997: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 998: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x4e, got 0x4e)
+TEST 999: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1000: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x4f, got 0x4f)
+TEST 1001: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1002: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x50, got 0x50)
+TEST 1003: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1004: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x51, got 0x51)
+TEST 1005: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1006: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x52, got 0x52)
+TEST 1007: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1008: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x53, got 0x53)
+TEST 1009: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1010: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x54, got 0x54)
+TEST 1011: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1012: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x55, got 0x55)
+TEST 1013: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1014: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x56, got 0x56)
+TEST 1015: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1016: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x57, got 0x57)
+TEST 1017: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1018: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x58, got 0x58)
+TEST 1019: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1020: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x59, got 0x59)
+TEST 1021: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1022: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x5a, got 0x5a)
+TEST 1023: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1024: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x5b, got 0x5b)
+TEST 1025: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1026: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x5c, got 0x5c)
+TEST 1027: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1028: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x5d, got 0x5d)
+TEST 1029: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1030: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x5e, got 0x5e)
+TEST 1031: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1032: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x5f, got 0x5f)
+TEST 1033: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1034: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x60, got 0x60)
+TEST 1035: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1036: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x61, got 0x61)
+TEST 1037: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1038: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x62, got 0x62)
+TEST 1039: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1040: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x63, got 0x63)
+TEST 1041: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1042: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x64, got 0x64)
+TEST 1043: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1044: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x65, got 0x65)
+TEST 1045: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1046: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x66, got 0x66)
+TEST 1047: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1048: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x67, got 0x67)
+TEST 1049: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1050: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x68, got 0x68)
+TEST 1051: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1052: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x69, got 0x69)
+TEST 1053: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1054: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x6a, got 0x6a)
+TEST 1055: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1056: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x6b, got 0x6b)
+TEST 1057: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1058: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x6c, got 0x6c)
+TEST 1059: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1060: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x6d, got 0x6d)
+TEST 1061: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1062: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x6e, got 0x6e)
+TEST 1063: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1064: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x6f, got 0x6f)
+TEST 1065: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1066: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x70, got 0x70)
+TEST 1067: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1068: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x71, got 0x71)
+TEST 1069: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1070: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x72, got 0x72)
+TEST 1071: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1072: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x73, got 0x73)
+TEST 1073: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1074: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x74, got 0x74)
+TEST 1075: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1076: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x75, got 0x75)
+TEST 1077: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1078: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x76, got 0x76)
+TEST 1079: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1080: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x77, got 0x77)
+TEST 1081: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1082: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x78, got 0x78)
+TEST 1083: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1084: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x79, got 0x79)
+TEST 1085: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1086: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x7a, got 0x7a)
+TEST 1087: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1088: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x7b, got 0x7b)
+TEST 1089: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1090: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x7c, got 0x7c)
+TEST 1091: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1092: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x7d, got 0x7d)
+TEST 1093: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1094: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x7e, got 0x7e)
+TEST 1095: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1096: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x7f, got 0x7f)
+TEST 1097: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1098: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x80, got 0x80)
+TEST 1099: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1100: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x81, got 0x81)
+TEST 1101: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1102: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x82, got 0x82)
+TEST 1103: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1104: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x83, got 0x83)
+TEST 1105: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1106: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x84, got 0x84)
+TEST 1107: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1108: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x85, got 0x85)
+TEST 1109: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1110: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x86, got 0x86)
+TEST 1111: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1112: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x87, got 0x87)
+TEST 1113: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1114: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x88, got 0x88)
+TEST 1115: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1116: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x89, got 0x89)
+TEST 1117: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1118: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x8a, got 0x8a)
+TEST 1119: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1120: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x8b, got 0x8b)
+TEST 1121: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1122: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x8c, got 0x8c)
+TEST 1123: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1124: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x8d, got 0x8d)
+TEST 1125: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1126: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x8e, got 0x8e)
+TEST 1127: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1128: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x8f, got 0x8f)
+TEST 1129: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1130: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x90, got 0x90)
+TEST 1131: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1132: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x91, got 0x91)
+TEST 1133: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1134: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x92, got 0x92)
+TEST 1135: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1136: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x93, got 0x93)
+TEST 1137: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1138: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x94, got 0x94)
+TEST 1139: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1140: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x95, got 0x95)
+TEST 1141: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1142: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x96, got 0x96)
+TEST 1143: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1144: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x97, got 0x97)
+TEST 1145: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1146: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x98, got 0x98)
+TEST 1147: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1148: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x99, got 0x99)
+TEST 1149: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1150: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x9a, got 0x9a)
+TEST 1151: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1152: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x9b, got 0x9b)
+TEST 1153: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1154: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x9c, got 0x9c)
+TEST 1155: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1156: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x9d, got 0x9d)
+TEST 1157: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1158: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x9e, got 0x9e)
+TEST 1159: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1160: 0x00-0xFF sweep (ODD)                              PASS  (expected 0x9f, got 0x9f)
+TEST 1161: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1162: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa0, got 0xa0)
+TEST 1163: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1164: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa1, got 0xa1)
+TEST 1165: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1166: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa2, got 0xa2)
+TEST 1167: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1168: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa3, got 0xa3)
+TEST 1169: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1170: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa4, got 0xa4)
+TEST 1171: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1172: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa5, got 0xa5)
+TEST 1173: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1174: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa6, got 0xa6)
+TEST 1175: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1176: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa7, got 0xa7)
+TEST 1177: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1178: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa8, got 0xa8)
+TEST 1179: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1180: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xa9, got 0xa9)
+TEST 1181: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1182: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xaa, got 0xaa)
+TEST 1183: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1184: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xab, got 0xab)
+TEST 1185: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1186: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xac, got 0xac)
+TEST 1187: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1188: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xad, got 0xad)
+TEST 1189: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1190: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xae, got 0xae)
+TEST 1191: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1192: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xaf, got 0xaf)
+TEST 1193: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1194: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb0, got 0xb0)
+TEST 1195: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1196: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb1, got 0xb1)
+TEST 1197: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1198: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb2, got 0xb2)
+TEST 1199: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1200: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb3, got 0xb3)
+TEST 1201: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1202: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb4, got 0xb4)
+TEST 1203: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1204: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb5, got 0xb5)
+TEST 1205: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1206: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb6, got 0xb6)
+TEST 1207: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1208: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb7, got 0xb7)
+TEST 1209: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1210: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb8, got 0xb8)
+TEST 1211: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1212: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xb9, got 0xb9)
+TEST 1213: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1214: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xba, got 0xba)
+TEST 1215: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1216: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xbb, got 0xbb)
+TEST 1217: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1218: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xbc, got 0xbc)
+TEST 1219: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1220: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xbd, got 0xbd)
+TEST 1221: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1222: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xbe, got 0xbe)
+TEST 1223: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1224: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xbf, got 0xbf)
+TEST 1225: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1226: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc0, got 0xc0)
+TEST 1227: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1228: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc1, got 0xc1)
+TEST 1229: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1230: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc2, got 0xc2)
+TEST 1231: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1232: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc3, got 0xc3)
+TEST 1233: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1234: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc4, got 0xc4)
+TEST 1235: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1236: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc5, got 0xc5)
+TEST 1237: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1238: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc6, got 0xc6)
+TEST 1239: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1240: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc7, got 0xc7)
+TEST 1241: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1242: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc8, got 0xc8)
+TEST 1243: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1244: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xc9, got 0xc9)
+TEST 1245: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1246: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xca, got 0xca)
+TEST 1247: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1248: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xcb, got 0xcb)
+TEST 1249: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1250: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xcc, got 0xcc)
+TEST 1251: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1252: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xcd, got 0xcd)
+TEST 1253: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1254: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xce, got 0xce)
+TEST 1255: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1256: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xcf, got 0xcf)
+TEST 1257: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1258: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd0, got 0xd0)
+TEST 1259: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1260: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd1, got 0xd1)
+TEST 1261: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1262: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd2, got 0xd2)
+TEST 1263: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1264: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd3, got 0xd3)
+TEST 1265: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1266: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd4, got 0xd4)
+TEST 1267: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1268: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd5, got 0xd5)
+TEST 1269: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1270: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd6, got 0xd6)
+TEST 1271: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1272: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd7, got 0xd7)
+TEST 1273: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1274: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd8, got 0xd8)
+TEST 1275: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1276: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xd9, got 0xd9)
+TEST 1277: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1278: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xda, got 0xda)
+TEST 1279: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1280: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xdb, got 0xdb)
+TEST 1281: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1282: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xdc, got 0xdc)
+TEST 1283: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1284: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xdd, got 0xdd)
+TEST 1285: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1286: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xde, got 0xde)
+TEST 1287: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1288: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xdf, got 0xdf)
+TEST 1289: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1290: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe0, got 0xe0)
+TEST 1291: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1292: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe1, got 0xe1)
+TEST 1293: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1294: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe2, got 0xe2)
+TEST 1295: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1296: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe3, got 0xe3)
+TEST 1297: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1298: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe4, got 0xe4)
+TEST 1299: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1300: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe5, got 0xe5)
+TEST 1301: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1302: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe6, got 0xe6)
+TEST 1303: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1304: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe7, got 0xe7)
+TEST 1305: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1306: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe8, got 0xe8)
+TEST 1307: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1308: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xe9, got 0xe9)
+TEST 1309: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1310: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xea, got 0xea)
+TEST 1311: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1312: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xeb, got 0xeb)
+TEST 1313: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1314: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xec, got 0xec)
+TEST 1315: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1316: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xed, got 0xed)
+TEST 1317: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1318: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xee, got 0xee)
+TEST 1319: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1320: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xef, got 0xef)
+TEST 1321: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1322: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf0, got 0xf0)
+TEST 1323: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1324: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf1, got 0xf1)
+TEST 1325: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1326: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf2, got 0xf2)
+TEST 1327: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1328: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf3, got 0xf3)
+TEST 1329: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1330: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf4, got 0xf4)
+TEST 1331: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1332: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf5, got 0xf5)
+TEST 1333: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1334: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf6, got 0xf6)
+TEST 1335: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1336: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf7, got 0xf7)
+TEST 1337: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1338: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf8, got 0xf8)
+TEST 1339: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1340: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xf9, got 0xf9)
+TEST 1341: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1342: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xfa, got 0xfa)
+TEST 1343: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1344: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xfb, got 0xfb)
+TEST 1345: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1346: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xfc, got 0xfc)
+TEST 1347: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1348: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xfd, got 0xfd)
+TEST 1349: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1350: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xfe, got 0xfe)
+TEST 1351: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1352: 0x00-0xFF sweep (ODD)                              PASS  (expected 0xff, got 0xff)
+TEST 1353: 0x00-0xFF sweep (ODD) -> no parity_error           PASS
+TEST 1354: Pattern byte loopback (EVEN)                       PASS  (expected 0x00, got 0x00)
+TEST 1355: Pattern byte loopback (ODD)                        PASS  (expected 0x00, got 0x00)
+TEST 1356: Pattern byte loopback (EVEN)                       PASS  (expected 0xff, got 0xff)
+TEST 1357: Pattern byte loopback (ODD)                        PASS  (expected 0xff, got 0xff)
+TEST 1358: Pattern byte loopback (EVEN)                       PASS  (expected 0x55, got 0x55)
+TEST 1359: Pattern byte loopback (ODD)                        PASS  (expected 0x55, got 0x55)
+TEST 1360: Pattern byte loopback (EVEN)                       PASS  (expected 0xaa, got 0xaa)
+TEST 1361: Pattern byte loopback (ODD)                        PASS  (expected 0xaa, got 0xaa)
+TEST 1362: Back-to-back burst byte (NONE)                     PASS  (expected 0x11, got 0x11)
+TEST 1363: Back-to-back burst byte (NONE)                     PASS  (expected 0x22, got 0x22)
+TEST 1364: Back-to-back burst byte (NONE)                     PASS  (expected 0x33, got 0x33)
+TEST 1365: Back-to-back burst byte (NONE)                     PASS  (expected 0x44, got 0x44)
+TEST 1366: Back-to-back burst byte (NONE)                     PASS  (expected 0x99, got 0x99)
+TEST 1367: Repeated byte 0x5A (EVEN)                          PASS  (expected 0x5a, got 0x5a)
+TEST 1368: Repeated byte 0x5A (EVEN)                          PASS  (expected 0x5a, got 0x5a)
+TEST 1369: Repeated byte 0x5A (EVEN)                          PASS  (expected 0x5a, got 0x5a)
+TEST 1370: Repeated byte 0x5A (EVEN)                          PASS  (expected 0x5a, got 0x5a)
+TEST 1371: Repeated byte 0x5A (EVEN)                          PASS  (expected 0x5a, got 0x5a)
+TEST 1372: Random byte loopback (NONE)                        PASS  (expected 0x24, got 0x24)
+TEST 1373: Random byte loopback (NONE)                        PASS  (expected 0x81, got 0x81)
+TEST 1374: Random byte loopback (NONE)                        PASS  (expected 0x09, got 0x09)
+TEST 1375: Random byte loopback (NONE)                        PASS  (expected 0x63, got 0x63)
+TEST 1376: Random byte loopback (NONE)                        PASS  (expected 0x0d, got 0x0d)
+TEST 1377: Random byte loopback (NONE)                        PASS  (expected 0x8d, got 0x8d)
+TEST 1378: Random byte loopback (NONE)                        PASS  (expected 0x65, got 0x65)
+TEST 1379: Random byte loopback (NONE)                        PASS  (expected 0x12, got 0x12)
+TEST 1380: Random byte loopback (NONE)                        PASS  (expected 0x01, got 0x01)
+TEST 1381: Random byte loopback (NONE)                        PASS  (expected 0x0d, got 0x0d)
+TEST 1382: Random byte loopback (EVEN)                        PASS  (expected 0x76, got 0x76)
+TEST 1383: Random byte loopback (EVEN)                        PASS  (expected 0x3d, got 0x3d)
+TEST 1384: Random byte loopback (EVEN)                        PASS  (expected 0xed, got 0xed)
+TEST 1385: Random byte loopback (EVEN)                        PASS  (expected 0x8c, got 0x8c)
+TEST 1386: Random byte loopback (EVEN)                        PASS  (expected 0xf9, got 0xf9)
+TEST 1387: Random byte loopback (EVEN)                        PASS  (expected 0xc6, got 0xc6)
+TEST 1388: Random byte loopback (EVEN)                        PASS  (expected 0xc5, got 0xc5)
+TEST 1389: Random byte loopback (EVEN)                        PASS  (expected 0xaa, got 0xaa)
+TEST 1390: Random byte loopback (EVEN)                        PASS  (expected 0xe5, got 0xe5)
+TEST 1391: Random byte loopback (EVEN)                        PASS  (expected 0x77, got 0x77)
+TEST 1392: Random byte loopback (ODD)                         PASS  (expected 0x12, got 0x12)
+TEST 1393: Random byte loopback (ODD)                         PASS  (expected 0x8f, got 0x8f)
+TEST 1394: Random byte loopback (ODD)                         PASS  (expected 0xf2, got 0xf2)
+TEST 1395: Random byte loopback (ODD)                         PASS  (expected 0xce, got 0xce)
+TEST 1396: Random byte loopback (ODD)                         PASS  (expected 0xe8, got 0xe8)
+TEST 1397: Random byte loopback (ODD)                         PASS  (expected 0xc5, got 0xc5)
+TEST 1398: Random byte loopback (ODD)                         PASS  (expected 0x5c, got 0x5c)
+TEST 1399: Random byte loopback (ODD)                         PASS  (expected 0xbd, got 0xbd)
+TEST 1400: Random byte loopback (ODD)                         PASS  (expected 0x2d, got 0x2d)
+TEST 1401: Random byte loopback (ODD)                         PASS  (expected 0x65, got 0x65)
+TEST 1402: Reset mid-TX/RX: tx_busy clears (NONE)             PASS
+TEST 1403: Reset mid-TX/RX: rx_busy clears (NONE)             PASS
+TEST 1404: Reset mid-TX/RX: tx returns to idle high (NONE)    PASS
+TEST 1405: Reset mid-TX/RX: no spurious tx_done (NONE)        PASS
+TEST 1406: Reset mid-TX/RX: no spurious rx_valid (NONE)       PASS
+TEST 1407: opback functional again after mid-frame reset (NONE) PASS  (expected 0x42, got 0x42)
+----------------------------------------
+  1407 / 1407 tests passed
+  ALL TESTS PASSED
+----------------------------------------
+tb/uart_tb.v:384: $finish called at 890405000 (1ps)

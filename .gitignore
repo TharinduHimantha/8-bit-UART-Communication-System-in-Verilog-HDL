@@ -1,3 +1,5 @@
 /test
-.zip
-.txt
+/build
+
+*.zip
+*.txt
