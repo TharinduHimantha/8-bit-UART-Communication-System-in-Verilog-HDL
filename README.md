@@ -7,13 +7,17 @@ detection, verified against two independent reference models and a
 1,900+ check regression suite.
 
 ![VERILOG HDL](https://img.shields.io/badge/VERILOG-HDL-00BFFF?style=for-the-badge)
+
 ![Verilog](https://img.shields.io/badge/CORE-HDL%20Verilog-2ea44f?style=for-the-badge)
-![Protocol](https://img.shields.io/badge/Protocol-UART-blueviolet?style=for-the-badge)
+![Protocol](https://img.shields.io/badge/Protocol-UART-ff4586?style=for-the-badge)
 ![8-bit](https://img.shields.io/badge/Data-8--Bit-brightgreen?style=for-the-badge)
-![Parity](https://img.shields.io/badge/Parity-NONE%20%7C%20EVEN%20%7C%20ODD-orange?style=for-the-badge)
-![Simulator](https://img.shields.io/badge/Simulator-Icarus%20Verilog-lightgrey?style=for-the-badge)
-![Tests](https://img.shields.io/badge/Regression-1937%2F1937%20Passing-success?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+
+
+
+
+
+
 
 ---
 
@@ -30,7 +34,6 @@ detection, verified against two independent reference models and a
 - [Design philosophy](#design-philosophy)
 - [Project history: Phase 1 → Phase 2](#project-history-phase-1--phase-2)
 - [Documentation](#documentation)
-- [License](#license)
 
 ---
 
@@ -322,6 +325,10 @@ assumptions that motivated phase 2's design.
 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) | What changed between Phase 1 and Phase 2, and why |
 | [`phase1_reference/README.md`](phase1_reference/README.md) | Standalone documentation for the earlier foundation phase |
 
-## License
-
-Released under the [MIT License](LICENSE).
+![Frame Format](https://img.shields.io/badge/Frame-8N1%20%2B%20Optional%20Parity-36d9d6)
+![Sampling](https://img.shields.io/badge/RX%20Sampling-Bit--Center-yellowgreen)
+![RX Synchronizer](https://img.shields.io/badge/RX%20Input%20Sync-2--Flop-ff8a00)
+![Break Detection](https://img.shields.io/badge/Break%20Detect-Free--Running%20Counter-f43f5e)
+![Parity](https://img.shields.io/badge/Parity-NONE%20%7C%20EVEN%20%7C%20ODD-5c9dff)
+![Simulator](https://img.shields.io/badge/Simulator-Icarus%20Verilog-lightgrey)
+![Tests](https://img.shields.io/badge/Regression-1937%2F1937%20Passing-success)
