@@ -127,11 +127,80 @@ block and nothing else does) live in
 [`docs/architecture.md`](docs/architecture.md).
 
 ## Frame format
-
+<!--
 ```
 Idle ─┬─ Start ─┬───────────── 8 data bits (LSB first) ─────────────┬─ [Parity] ─┬─ Stop ─┬─ Idle
  1    │    0    │  d0  d1  d2  d3  d4  d5  d6  d7                   │  optional  │   1    │  1
       └─────────┴───────────────────── one bit period each, exactly CLKS_PER_BIT cycles wide ─────────┘
+```
+-->
+
+```mermaid
+
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "#FFFFFF",
+    "primaryTextColor": "#1E293B",
+    "lineColor": "#64748B",
+    "fontFamily": "Arial, Helvetica, sans-serif",
+    "fontSize": "14px"
+  },
+  "flowchart": {
+    "curve": "linear",
+    "nodeSpacing": 12,
+    "rankSpacing": 24,
+    "htmlLabels": true
+  }
+}}%%
+
+flowchart LR
+    IDLE["<b>IDLE</b><br/>Logic 1"]
+    START["<b>START</b><br/>0"]
+
+    subgraph DATA["8 DATA BITS · LSB FIRST"]
+        direction LR
+        D0["d0"]
+        D1["d1"]
+        D2["d2"]
+        D3["d3"]
+        D4["d4"]
+        D5["d5"]
+        D6["d6"]
+        D7["d7"]
+
+        D0 --- D1 --- D2 --- D3 --- D4 --- D5 --- D6 --- D7
+    end
+
+    PAR["<b>PARITY</b><br/>Optional"]
+    STOP["<b>STOP</b><br/>1"]
+    IDLE2["<b>IDLE</b><br/>Logic 1"]
+
+    IDLE --> START
+    START --> D0
+    D7 --> PAR
+    PAR --> STOP
+    STOP --> IDLE2
+
+    NOTE["<b>BIT TIMING</b><br/>Each transmitted bit occupies exactly<br/>CLKS_PER_BIT clock cycles."]
+
+    IDLE ~~~ NOTE
+
+    classDef idle fill:#F1F5F9,stroke:#94A3B8,color:#334155,stroke-width:1.5px
+    classDef start fill:#DBEAFE,stroke:#6095D8,color:#1E3A5F,stroke-width:1.5px
+    classDef data fill:#EAF7EF,stroke:#65A982,color:#14532D,stroke-width:1.2px
+    classDef parity fill:#FFF4DB,stroke:#D6AD55,color:#78350F,stroke-width:1.5px
+    classDef stop fill:#DBEAFE,stroke:#6095D8,color:#1E3A5F,stroke-width:1.5px
+    classDef note fill:#FFFFFF,stroke:#CBD5E1,color:#475569,stroke-dasharray:4 3
+
+    class IDLE,IDLE2 idle
+    class START start
+    class D0,D1,D2,D3,D4,D5,D6,D7 data
+    class PAR parity
+    class STOP stop
+    class NOTE note
+
+    style DATA fill:#F7FCF8,stroke:#B7D9C1,stroke-width:1px
 ```
 
 - Idle line level is `1`; a frame begins the instant the line falls to `0`.
