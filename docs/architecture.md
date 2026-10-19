@@ -44,28 +44,126 @@ phase-1 design was reviewed for assumptions that needed to be revisited:
 
 ## 2. Module inventory (updated)
 
-```
-                    +----------------------------------------------------+
-                    |                       uart.v                       |
-                    |                                                    |
-  tx_data[7:0] ---->|                                                    |
-  tx_start ---->|   +-----------+        +----------+                    |
-                |   | baud_gen  |--tick->| uart_tx  |--tx--------------->|---> tx (pin)
-                |   |(CLKS_PER  |<-------|(+parity) |                    |
-                |   |  _BIT)    |restart |          |---tx_busy--------->|---> tx_busy
-                |   +-----------+        +----------+---tx_done--------->|---> tx_done
-                |                                                        |
-   rx (pin)---->|--rx-->  +------------+                                 |
-                |         |  uart_rx   |--rx_data[7:0]------------------>|---> rx_data
-                |         |(+parity,   |--rx_valid------------------------>|---> rx_valid
-                |         | framing,   |--rx_busy--------------------------->|---> rx_busy
-                |         | break)     |--parity_error----------------------->|---> parity_error
-                |         +------------+--framing_error----------------------->|---> framing_error
-                |                      --break_detected--------------------------->|---> break_detected
-                |                                                        |
-                |         rx_error  = OR of the three error signals ---->|---> rx_error
-                |         rx_status = {break,framing,parity} bus ------->|---> rx_status[2:0]
-                +--------------------------------------------------------+
+
+```mermaid
+
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "#FFFFFF",
+    "primaryColor": "#F3F7FC",
+    "primaryTextColor": "#172B4D",
+    "primaryBorderColor": "#B8C7DA",
+    "lineColor": "#64748B",
+    "secondaryColor": "#EEF5FF",
+    "tertiaryColor": "#FFFFFF",
+    "clusterBkg": "#FFFFFF",
+    "clusterBorder": "#CBD5E1",
+    "edgeLabelBackground": "#FFFFFF",
+    "fontFamily": "Arial, Helvetica, sans-serif",
+    "fontSize": "14px"
+  },
+  "flowchart": {
+    "htmlLabels": true,
+    "curve": "linear",
+    "nodeSpacing": 32,
+    "rankSpacing": 48,
+    "padding": 12,
+    "useMaxWidth": true
+  }
+}}%%
+
+flowchart LR
+    subgraph PORTS["EXTERNAL INTERFACE"]
+        direction TB
+        TX_IN["<b>TX INPUTS</b><br/>tx_data[7:0]<br/>tx_start"]
+        RX_IN(["<b>RX PIN</b><br/>Serial input"])
+        TX_OUT(["<b>TX PIN</b><br/>Serial output"])
+    end
+
+    subgraph CORE["UART CONTROLLER  ·  uart.v"]
+        direction TB
+
+        subgraph TX["01  TRANSMITTER"]
+            direction LR
+            BAUD["<b>baud_gen</b><br/><small>CLKS_PER_BIT</small>"]
+            TXCORE["<b>uart_tx</b><br/><small>Serializer · Parity</small>"]
+            BAUD -->|"tick"| TXCORE
+            TXCORE -.->|"restart"| BAUD
+        end
+
+        subgraph RX["02  RECEIVER"]
+            direction TB
+            RXCORE["<b>uart_rx</b><br/><small>Deserializer · Parity check<br/>Framing and break detection</small>"]
+
+            RXDATA["<b>Received data</b><br/>rx_data[7:0]"]
+            RXCTRL["<b>RX control</b><br/>rx_valid · rx_busy"]
+
+            RXCORE --> RXDATA
+            RXCORE --> RXCTRL
+        end
+
+        subgraph ERR["03  ERROR DETECTION & STATUS"]
+            direction LR
+            PAR["parity_error"]
+            FRM["framing_error"]
+            BRK["break_detected"]
+            AGG["<b>rx_error</b><br/><small>OR reduction</small>"]
+            STAT["<b>rx_status[2:0]</b><br/><small>{break, framing, parity}</small>"]
+
+            PAR --> AGG
+            FRM --> AGG
+            BRK --> AGG
+
+            PAR -.-> STAT
+            FRM -.-> STAT
+            BRK -.-> STAT
+        end
+
+        RXCORE --> PAR
+        RXCORE --> FRM
+        RXCORE --> BRK
+    end
+
+    TX_IN --> TXCORE
+    TXCORE --> TX_OUT
+
+    RX_IN --> RXCORE
+
+    subgraph OUTPUTS["OUTPUT SIGNALS"]
+        direction TB
+        TXSTATUS["<b>TX status</b><br/>tx_busy · tx_done"]
+        RXSTATUS["<b>RX status</b><br/>rx_valid · rx_busy"]
+        DATASTATUS["<b>Data &amp; errors</b><br/>rx_data[7:0]<br/>rx_error · rx_status[2:0]"]
+    end
+
+    TXCORE --> TXSTATUS
+    RXCTRL --> RXSTATUS
+    RXDATA --> DATASTATUS
+    AGG --> DATASTATUS
+    STAT --> DATASTATUS
+
+    classDef io fill:#F8FAFC,stroke:#94A3B8,color:#334155,stroke-width:1.2px
+    classDef tx fill:#EFF6FF,stroke:#6095D8,color:#173D70,stroke-width:1.4px
+    classDef rx fill:#ECFDF5,stroke:#55A987,color:#14563D,stroke-width:1.4px
+    classDef data fill:#F0F7FF,stroke:#93B8E5,color:#1E426B,stroke-width:1px
+    classDef error fill:#FFF4F2,stroke:#E5A095,color:#8A3329,stroke-width:1.2px
+    classDef status fill:#FFF9E8,stroke:#D6B66A,color:#76551A,stroke-width:1.2px
+
+    class TX_IN,RX_IN,TX_OUT io
+    class BAUD,TXCORE tx
+    class RXCORE rx
+    class RXDATA,RXCTRL data
+    class PAR,FRM,BRK,AGG error
+    class STAT,TXSTATUS,RXSTATUS,DATASTATUS status
+
+    style PORTS fill:#FFFFFF,stroke:#CBD5E1,stroke-width:1px
+    style CORE fill:#FFFFFF,stroke:#64748B,stroke-width:1.8px
+    style TX fill:#F5F9FF,stroke:#B8D1F0,stroke-width:1px
+    style RX fill:#F3FCF7,stroke:#B4DDC8,stroke-width:1px
+    style ERR fill:#FFFAF9,stroke:#EBC5BE,stroke-width:1px
+    style OUTPUTS fill:#FFFFFF,stroke:#CBD5E1,stroke-width:1px
+
 ```
 
 | Module        | File               | Responsibility                                                    |
