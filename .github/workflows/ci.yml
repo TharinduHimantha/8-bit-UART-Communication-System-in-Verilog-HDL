@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  regression:
+    name: Simulate, lint, and synthesis-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog, Verilator, and Yosys
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq iverilog verilator yosys
+
+      - name: Run full regression (fifo_tb + uart_core_tb)
+        run: make regression
+
+      - name: Lint (Verilator --lint-only -Wall)
+        run: make lint
+
+      - name: Synthesis check (Yosys, generic flow)
+        run: make synth
+
+      - name: Upload synthesis log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synth-log
+          path: build/synth_check.log

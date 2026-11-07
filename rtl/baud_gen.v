@@ -1,60 +1,87 @@
 //==============================================================================
 // Module : baud_gen
-// Purpose: Generates a single-cycle "tick" pulse once every CLKS_PER_BIT
-//          system clock cycles. This tick represents the passing of one
-//          UART bit period and is used by uart_tx to know when to advance
-//          to the next bit.
+// Purpose: Generates a single-cycle "tick" pulse once every "active_divisor"
+//          system clock cycles, where active_divisor is itself a runtime-
+//          configurable value (software writes it through the BAUD_DIV
+//          register), not a fixed elaboration-time parameter.
 //
-// Why a "restart" input?
-//   A UART frame must have every bit (start, 8 data, stop) last EXACTLY
-//   CLKS_PER_BIT clock cycles. If this counter were purely free-running
-//   from power-up, the very first bit of a frame (the start bit) could be
-//   shortened, because tx_start can arrive at any arbitrary point in the
-//   free-running counter's cycle -- the counter has no idea a new frame is
-//   beginning.
+// PHASE 6-8 CHANGE FROM THE EARLIER (PARAMETER-ONLY) VERSION:
+//   Earlier phases fixed CLKS_PER_BIT as a Verilog parameter -- correct for
+//   a design with no register interface, but this phase's BAUD_DIV register
+//   (see docs/register_map.md) requires the divisor to be changeable by
+//   software at runtime. DIV_WIDTH and DIV_RESET_VALUE remain parameters
+//   (they size the register and set its value out of reset), but the value
+//   actually used for bit timing, active_divisor, is a register loaded from
+//   the cfg_divisor input.
 //
-//   To fix this, uart_tx pulses "restart" for one clock cycle at the exact
-//   moment it begins driving the start bit. That resets this counter to a
-//   known phase, so the very first "tick" (end of the start bit) is exactly
-//   CLKS_PER_BIT cycles later, same as every bit after it.
+// Update policy -- "applied after current frame" (see docs/register_map.md
+// BAUD_DIV and docs/architecture.md Section on baud reconfiguration):
+//   active_divisor only loads a new value from cfg_divisor while
+//   cfg_update_allowed is asserted. The top-level module drives
+//   cfg_update_allowed = !(tx_busy || rx_busy), i.e. only while the link is
+//   completely idle. This means:
+//     - A BAUD_DIV write that lands while the link is idle takes effect
+//       immediately, in time for the very next frame.
+//     - A BAUD_DIV write that lands mid-frame is held (visible in the
+//       BAUD_DIV register immediately, since that register itself is a
+//       simple read/write store elsewhere -- see uart_regs.v) but does NOT
+//       affect active_divisor, and therefore does not affect timing, until
+//       the current frame finishes and the link goes idle.
+//   This is deterministic and avoids the alternative of applying a divisor
+//   change mid-frame, which would corrupt that frame's bit timing (some
+//   bits at the old rate, some at the new rate).
 //
-//   Between restarts, the counter free-runs, so consecutive bits within one
-//   frame are automatically spaced CLKS_PER_BIT cycles apart with no drift.
+// The restart/tick handshake with uart_tx is otherwise unchanged from the
+// earlier phases -- see docs/architecture.md for the full derivation of why
+// both are combinational (zero extra latency, so every bit -- including the
+// start bit -- is exactly active_divisor cycles wide).
 //==============================================================================
 
 module baud_gen #(
-    parameter integer CLKS_PER_BIT = 434   // system clocks per UART bit period
+    parameter integer DIV_WIDTH       = 16,
+    parameter integer DIV_RESET_VALUE = 434   // e.g. 50,000,000 / 115200, truncated
 ) (
-    input  wire clk,
-    input  wire reset,     // synchronous, active-high
-    input  wire restart,   // pulse: realign the counter to a new bit boundary
-    output wire tick        // one clock-wide pulse, once per bit period
+    input  wire                   clk,
+    input  wire                   reset,             // synchronous, active-high
+    input  wire [DIV_WIDTH-1:0]   cfg_divisor,        // from BAUD_DIV register
+    input  wire                   cfg_update_allowed, // link fully idle
+    input  wire                   restart,            // realign to a new frame
+    output wire                   tick,
+    output wire [DIV_WIDTH-1:0]   active_divisor_out  // frame-stable divisor;
+                                                         // see header -- RX must
+                                                         // use THIS, not cfg_divisor
+                                                         // directly, or a mid-frame
+                                                         // register write corrupts
+                                                         // RX timing even though TX
+                                                         // is correctly protected.
 );
 
-    // Width just large enough to count up to CLKS_PER_BIT-1.
-    localparam integer CW = (CLKS_PER_BIT <= 1) ? 1 : $clog2(CLKS_PER_BIT);
+    reg [DIV_WIDTH-1:0] active_divisor;
+    assign active_divisor_out = active_divisor;
 
-    reg [CW-1:0] count;
+    always @(posedge clk) begin
+        if (reset)
+            active_divisor <= DIV_RESET_VALUE[DIV_WIDTH-1:0];
+        else if (cfg_update_allowed)
+            active_divisor <= cfg_divisor;
+        // else: hold -- a pending divisor change waits for idle (see header).
+    end
 
-    // NOTE: tick is combinational (count == max), not a registered pulse.
-    // This keeps the counter/tick pair a true zero-extra-latency divider:
-    // the cycle on which "count" reaches its terminal value is the same
-    // cycle "tick" is observed high, and also the same cycle "count" rolls
-    // back to zero on the next edge. This is what allows a fully accurate
-    // CLKS_PER_BIT-cycle bit period, including the very first bit right
-    // after "restart".
-    assign tick = (count == CLKS_PER_BIT - 1);
+    reg [DIV_WIDTH-1:0] count;
+
+    // Combinational tick: see docs/architecture.md for why this must not be
+    // registered (a registered tick reintroduces a one-cycle error on the
+    // start bit specifically, which was caught during earlier-phase
+    // development by directly measuring captured line timing).
+    assign tick = (count == active_divisor - 1'b1);
 
     always @(posedge clk) begin
         if (reset) begin
-            count <= {CW{1'b0}};
+            count <= {DIV_WIDTH{1'b0}};
         end else if (restart) begin
-            // Realign: "count" starts a fresh CLKS_PER_BIT-cycle sweep
-            // starting next cycle, so the following "tick" is exactly
-            // CLKS_PER_BIT cycles after the state that requested restart.
-            count <= {CW{1'b0}};
+            count <= {DIV_WIDTH{1'b0}};
         end else if (tick) begin
-            count <= {CW{1'b0}};
+            count <= {DIV_WIDTH{1'b0}};
         end else begin
             count <= count + 1'b1;
         end
