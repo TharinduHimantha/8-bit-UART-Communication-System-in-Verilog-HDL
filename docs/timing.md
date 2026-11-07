@@ -1,5 +1,12 @@
 # Timing and Performance Analysis
 
+<p align="center"><img src="assets/header-timing.svg" alt="Timing and Performance" width="100%"></p>
+
+<p align="center"><sub>[README](../README.md) · [Architecture](architecture.md) · [Registers](register_map.md) · [FIFO](fifo.md) · [Interrupts](interrupts.md) · **Timing** · [Verification](verification.md)</sub></p>
+
+> [!NOTE]
+> **Worked example used throughout** — 50 MHz clock · 115200 baud · `CLKS_PER_BIT = 434` · bit period 8.68 µs · baud error +0.0064 % · 11,520 bytes/s (8-N-1) · 16-entry FIFO ≈ 1.389 ms of slack · RX latency ≈ 82.5 µs.
+
 This document covers bit-level timing (baud generation, sampling,
 metastability) and system-level performance (throughput, latency,
 buffering capacity), all calculated from this project's actual design
@@ -29,17 +36,23 @@ actual baud rate   = 50,000,000 / 434 = 115207.4 baud
 error              = (115207.4 - 115200) / 115200 = +0.0064 %
 ```
 
-This error comes from Verilog's (and software's) integer division
-truncating the `.027` remainder. It is negligible here -- real UART
-receivers generally tolerate roughly 1-2% of baud mismatch before bit
-errors appear -- but it is not zero, and for other clock/baud
-combinations (particularly high baud rates relative to the clock, where
-each integer step is a larger fraction of the bit period) it can be
-considerably larger. This project does not implement fractional
-(accumulator-based) baud generation; see `docs/verification.md`'s
-"Future improvements" for when that would become worth adding.
+> [!NOTE]
+> This error comes from Verilog's (and software's) integer division
+> truncating the `.027` remainder. It is negligible here -- real UART
+> receivers generally tolerate roughly 1-2% of baud mismatch before bit
+> errors appear -- but it is not zero, and for other clock/baud
+> combinations (particularly high baud rates relative to the clock, where
+> each integer step is a larger fraction of the bit period) it can be
+> considerably larger. This project does not implement fractional
+> (accumulator-based) baud generation; see `docs/verification.md`'s
+> "Future improvements" for when that would become worth adding.
+
 
 ## 2. Bit sampling, restart/tick handshake, and metastability
+
+<p align="center">
+  <img src="assets/frame-format.svg" alt="Frame format with centre-sampling" width="100%">
+</p>
 
 These are unchanged in principle from earlier phases; see
 `docs/architecture.md` for the complete derivation (the
@@ -97,7 +110,7 @@ byte_rate = BAUD_RATE / bits_per_frame
 ```
 
 At 115200 baud, 8-N-1 (10 bits/frame): **11,520 bytes/sec** (~11.5 KB/s).
-At 115200 baud, 8-E-2 (12 bits/frame): **9,600 bytes/sec** (~9.4 KB/s).
+At 115200 baud, 8-E-2 (12 bits/frame): **9,600 bytes/sec** (~9.6 KB/s).
 
 ### FIFO buffering capacity
 
@@ -122,13 +135,17 @@ the byte becoming visible via `RX_AVAILABLE`/a `DATA` read):
 ```
 ~2 cycles (input synchronizer)
 + CLKS_PER_BIT/2 cycles (start-bit center validation)
-+ CLKS_PER_BIT * (8 + parity_bits + stop_bits - 1) cycles (remaining bit centers)
++ CLKS_PER_BIT * (8 + parity_bits + stop_bits) cycles (remaining bit centers)
 ```
 
 At 115200 baud / 8-N-1 (`CLKS_PER_BIT=434`): approximately
 `2 + 217 + 434*9 = 4125` cycles, or about **82.5 microseconds** at 50 MHz
 -- consistent with (slightly under, due to the half-bit head start) one
 full 10-bit frame period, as expected.
+
+<p align="center">
+  <img src="assets/rx-latency.svg" alt="RX latency breakdown" width="100%">
+</p>
 
 ### Interrupt latency
 

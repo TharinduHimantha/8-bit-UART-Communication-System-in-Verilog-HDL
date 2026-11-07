@@ -6,7 +6,7 @@ had to change, and why) is documented in detail in
 [`docs/architecture.md`](docs/architecture.md); this file is a shorter,
 chronological summary.
 
-## Phase 3 — FIFOs, Register Interface, Interrupts *(current)*
+## Phase 3 : FIFOs, Register Interface, Interrupts *(current)*
 
 The peripheral gained a full software-facing interface on top of the
 earlier working serial engine:
@@ -51,7 +51,7 @@ earlier working serial engine:
 - A blocking-assignment race on `reset` in a testbench, adopted from
   that point forward as a project-wide rule (always use `reset <= ...`).
 
-## Earlier phase — Parity, Framing, and Break Detection
+## Phase 2 : Parity, Framing, and Break Detection
 
 Added to the base TX/RX/loopback design:
 
@@ -68,7 +68,7 @@ Added to the base TX/RX/loopback design:
   structurally-different Verilog-side parity calculation, and a
   separate Python-based vector generator/reference model.
 
-## Earliest phase — UART TX/RX/Loopback Foundation
+## Phase 1 :UART TX/RX/Loopback Foundation
 
 The initial working design:
 

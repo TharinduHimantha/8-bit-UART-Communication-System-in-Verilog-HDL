@@ -1,5 +1,9 @@
 # Register Map
 
+<p align="center"><img src="assets/header-register-map.svg" alt="Register Map" width="100%"></p>
+
+<p align="center"><sub>[README](../README.md) · [Architecture](architecture.md) · **Registers** · [FIFO](fifo.md) · [Interrupts](interrupts.md) · [Timing](timing.md) · [Verification](verification.md)</sub></p>
+
 Every address and bit position in this document is sourced from
 `rtl/uart_defs.vh`, which is the single file both the RTL and every
 testbench actually `` `include ``. This document is a description of that
@@ -7,6 +11,10 @@ file, not an independent specification -- if the two ever disagreed, the
 `.vh` file is what the hardware actually does, and this document would be
 wrong. See `docs/architecture.md`'s consistency-review note for why this
 matters enough to be stated explicitly.
+
+<p align="center">
+  <img src="assets/register-map.svg" alt="Register map overview" width="100%">
+</p>
 
 ## Register access protocol
 
@@ -85,9 +93,11 @@ trust a `0x00` read as if it were real data.
 | 9   | BREAK              | **Live level**, NOT the sticky `IRQ_STATUS` break bit. Reflects `uart_rx`'s `break_detected` output directly: 1 for as long as the line is continuously held low past the break threshold, 0 the instant the line recovers. See `docs/interrupts.md` for why this is deliberately different from `IRQ_STATUS[3]` (a latched, sticky, write-1-clearable "a break event happened" bit). |
 | 31:10 | -                | Reserved, reads 0. |
 
-**Reading STATUS never clears anything.** The only way to clear the
-sticky bits 6-8 (or the corresponding `IRQ_STATUS` sticky bits) is an
-explicit write-1-to-clear to `IRQ_STATUS`.
+> [!TIP]
+> **Reading STATUS never clears anything.** The only way to clear the
+> sticky bits 6-8 (or the corresponding `IRQ_STATUS` sticky bits) is an
+> explicit write-1-to-clear to `IRQ_STATUS`.
+
 
 ## CONTROL (0x08)
 
@@ -100,15 +110,17 @@ explicit write-1-to-clear to `IRQ_STATUS`.
 | 4   | RX_FIFO_RESET      | W-pulse| 0     | Writing 1 resets the RX FIFO (empties it) for one cycle; always reads back 0. |
 | 31:5| -                  | RO     | 0     | Reserved, reads 0. |
 
-**Design decision: no `FIFO_ENABLE` bit.** The assignment's example
-register layout suggested one; it was deliberately not implemented. A
-real "bypass the FIFO entirely" mode would require an entirely separate,
-FIFO-less data path (or a FIFO forced to depth 1, which already exists as
-an option via the `FIFO_DEPTH` parameter at instantiation time) -- adding
-real design and verification complexity for a mode this project's target
-use case does not need. Per the assignment's own guidance ("if a bit is
-unnecessary, don't include it" / "choose the simpler architecture and
-explain the decision"), it was left out.
+> [!NOTE]
+> **Design decision: no `FIFO_ENABLE` bit.** The assignment's example
+> register layout suggested one; it was deliberately not implemented. A
+> real "bypass the FIFO entirely" mode would require an entirely separate,
+> FIFO-less data path (or a FIFO forced to depth 1, which already exists as
+> an option via the `FIFO_DEPTH` parameter at instantiation time) -- adding
+> real design and verification complexity for a mode this project's target
+> use case does not need. Per the assignment's own guidance ("if a bit is
+> unnecessary, don't include it" / "choose the simpler architecture and
+> explain the decision"), it was left out.
+
 
 ## BAUD_DIV (0x0C)
 
@@ -117,18 +129,20 @@ explain the decision"), it was left out.
 | 15:0 | CLKS_PER_BIT | RW | 434  | The number of system clock cycles per UART bit period. Software computes this directly (`CLK_FREQ_HZ / desired_baud`, integer division) and writes the result -- there is no on-chip fractional baud generator; see `docs/timing.md` for the resulting error calculation. |
 | 31:16| -        | RO     | 0     | Reserved, reads 0. |
 
-**Update policy while TX/RX is active**: **deferred until idle.** A write
-to `BAUD_DIV` is stored immediately (a subsequent read reflects it right
-away), but the actual bit-timing divisor used by `baud_gen` only loads
-the new value while both `TX_BUSY` and (the RX equivalent of) `TX_BUSY`
-are deasserted -- i.e. the change takes effect starting with the very
-next frame after the link goes idle, never partway through a frame in
-progress. This is deterministic and avoids a frame being timed partly at
-the old rate and partly at the new rate. See `docs/architecture.md` for
-the full derivation, including a bug this exact protection caught during
-development (RX was initially reading the *raw*, unprotected register
-value directly, rather than the deferred, frame-stable value -- see that
-document's "lessons learned").
+> [!IMPORTANT]
+> **Update policy while TX/RX is active**: **deferred until idle.** A write
+> to `BAUD_DIV` is stored immediately (a subsequent read reflects it right
+> away), but the actual bit-timing divisor used by `baud_gen` only loads
+> the new value while both `TX_BUSY` and (the RX equivalent of) `TX_BUSY`
+> are deasserted -- i.e. the change takes effect starting with the very
+> next frame after the link goes idle, never partway through a frame in
+> progress. This is deterministic and avoids a frame being timed partly at
+> the old rate and partly at the new rate. See `docs/architecture.md` for
+> the full derivation, including a bug this exact protection caught during
+> development (RX was initially reading the *raw*, unprotected register
+> value directly, rather than the deferred, frame-stable value -- see that
+> document's "lessons learned").
+
 
 ## FRAME_CONFIG (0x10)
 

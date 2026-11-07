@@ -1,10 +1,18 @@
 # FIFO Architecture
 
+<p align="center"><img src="assets/header-fifo.svg" alt="FIFO Architecture" width="100%"></p>
+
+<p align="center"><sub>[README](../README.md) · [Architecture](architecture.md) · [Registers](register_map.md) · **FIFO** · [Interrupts](interrupts.md) · [Timing](timing.md) · [Verification](verification.md)</sub></p>
+
 `rtl/uart_fifo.v` is a generic, reusable synchronous FIFO. It has no
 knowledge of UART bytes, frames, or serial timing whatsoever -- it is
 instantiated twice in `uart_top.v` (TX FIFO, RX FIFO) with identical
 parameters, and could equally be reused in a completely unrelated
 project.
+
+<p align="center">
+  <img src="assets/fifo.svg" alt="Animated FIFO operation" width="100%">
+</p>
 
 ## Parameters
 
@@ -72,15 +80,17 @@ flips every bit below it, so ANDing the two together is zero only for
 powers of two -- and the explicit `DEPTH == 0` check exists because that
 trick alone would incorrectly accept zero).
 
-**A modulo-based alternative that would support arbitrary depths was
-considered and rejected.** It would replace the free wrap-bit comparison
-above with explicit modulo arithmetic on every pointer increment (or an
-explicit `count` register incremented/decremented on every operation
-instead of derived from pointer subtraction), adding real arithmetic cost
-for a capability this project's actual `DEPTH` values (always powers of
-two by choice) never need. Failing loudly at elaboration time for an
-unsupported `DEPTH`, rather than silently synthesizing subtly-incorrect
-full/empty logic, was judged the better tradeoff.
+> [!NOTE]
+> **A modulo-based alternative that would support arbitrary depths was
+> considered and rejected.** It would replace the free wrap-bit comparison
+> above with explicit modulo arithmetic on every pointer increment (or an
+> explicit `count` register incremented/decremented on every operation
+> instead of derived from pointer subtraction), adding real arithmetic cost
+> for a capability this project's actual `DEPTH` values (always powers of
+> two by choice) never need. Failing loudly at elaboration time for an
+> unsupported `DEPTH`, rather than silently synthesizing subtly-incorrect
+> full/empty logic, was judged the better tradeoff.
+
 
 ## Read side: first-word-fall-through (FWFT), and why
 

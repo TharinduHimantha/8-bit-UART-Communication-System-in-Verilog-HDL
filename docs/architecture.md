@@ -1,6 +1,20 @@
 # Architecture
 
+<p align="center"><img src="assets/header-architecture.svg" alt="Architecture" width="100%"></p>
+
+<p align="center"><sub>[README](../README.md) · **Architecture** · [Registers](register_map.md) · [FIFO](fifo.md) · [Interrupts](interrupts.md) · [Timing](timing.md) · [Verification](verification.md)</sub></p>
+
+> [!NOTE]
+> **At a glance** — one clock domain · synchronous active-high reset · `FIFO_DEPTH=16` · `BAUD_DIV_RESET=434` · `CLKS_PER_BIT_MAX=4096` · bus: `addr[7:0]`, `write_en`, `write_data[31:0]`, `read_en`, `read_data[31:0]`, `ready` (tied 1) · pins: `tx_pin`, `rx_pin`, `irq`.
+
 ## 1. System overview
+
+<p align="center">
+  <img src="assets/architecture.svg" alt="uart_top architecture" width="100%">
+</p>
+
+<details>
+<summary>Text version of the block diagram</summary>
 
 ```
                               uart_top.v
@@ -37,6 +51,8 @@
    └─────────────────────────────────────────────────────────────────────┘
 ```
 
+</details>
+
 ## 2. Module inventory
 
 | Module         | File               | Responsibility |
@@ -59,6 +75,9 @@ coverage in addition to the full-system `tb/uart_core_tb.v` (see
 
 ## 3. TX/RX FSMs
 
+<p align="center">
+  <img src="assets/fsm.svg" alt="TX and RX state machines" width="100%">
+</p>
 Both engines are 4-6-state FSMs (state count depends on the currently
 latched parity/stop-bit configuration); the full derivation -- including
 the parity calculation, the combinational restart/tick handshake that
@@ -94,20 +113,22 @@ while the link is completely idle. A `BAUD_DIV` write that lands mid-frame
 is stored immediately (a subsequent read reflects it right away) but does
 not affect actual bit timing until the current frame finishes.
 
-**A real bug this protection was built to prevent, and initially didn't
-fully prevent**, is worth documenting precisely: an early version of
-`uart_top.v` wired `uart_rx`'s `cfg_clks_per_bit` input directly to the
-*raw* `BAUD_DIV` register value, not to `baud_gen`'s protected,
-frame-stable `active_divisor`. TX was correctly protected (it only ever
-sees timing through `baud_gen`'s `tick` output), but RX was reading the
-live, unprotected register directly -- so a `BAUD_DIV` write mid-RX-frame
-corrupted that frame's bit timing even though the exact same write
-mid-TX-frame was harmless. This was caught by a directed test that
-changed `BAUD_DIV` mid-frame and checked the *received* byte was still
-correct (see `docs/verification.md`), not by inspection. The fix:
-`baud_gen` now exposes `active_divisor_out`, and `uart_top` wires *that*
--- not the raw register -- into `uart_rx`. Both TX and RX now derive
-their timing from the exact same protected value.
+> [!WARNING]
+> **A real bug this protection was built to prevent, and initially didn't
+> fully prevent**, is worth documenting precisely: an early version of
+> `uart_top.v` wired `uart_rx`'s `cfg_clks_per_bit` input directly to the
+> *raw* `BAUD_DIV` register value, not to `baud_gen`'s protected,
+> frame-stable `active_divisor`. TX was correctly protected (it only ever
+> sees timing through `baud_gen`'s `tick` output), but RX was reading the
+> live, unprotected register directly -- so a `BAUD_DIV` write mid-RX-frame
+> corrupted that frame's bit timing even though the exact same write
+> mid-TX-frame was harmless. This was caught by a directed test that
+> changed `BAUD_DIV` mid-frame and checked the *received* byte was still
+> correct (see `docs/verification.md`), not by inspection. The fix:
+> `baud_gen` now exposes `active_divisor_out`, and `uart_top` wires *that*
+> -- not the raw register -- into `uart_rx`. Both TX and RX now derive
+> their timing from the exact same protected value.
+
 
 ## 5. TX/RX FIFO auto-feed
 
@@ -284,8 +305,8 @@ than a self-congratulatory summary.
     or vendor-specific (FPGA/ASIC) flow -- see
     `docs/verification.md`'s "Known limitations" for exactly what that
     does and does not prove.
-16. **Documentation**: this document set (`README.md` plus seven files
-    under `docs/`) was written to match the RTL exactly, including
+16. **Documentation**: this document set (`README.md` plus six files
+    under `docs/`, and `CHANGELOG.md`) was written to match the RTL exactly, including
     documenting real bugs found during development and the fixes for
     them, rather than presenting only a idealized final design with no
     development history.

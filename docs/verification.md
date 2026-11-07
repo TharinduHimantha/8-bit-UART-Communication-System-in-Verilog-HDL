@@ -1,5 +1,9 @@
 # Verification
 
+<p align="center"><img src="assets/header-verification.svg" alt="Verification" width="100%"></p>
+
+<p align="center"><sub>[README](../README.md) · [Architecture](architecture.md) · [Registers](register_map.md) · [FIFO](fifo.md) · [Interrupts](interrupts.md) · [Timing](timing.md) · **Verification**</sub></p>
+
 ## 1. Verification architecture
 
 ```
@@ -32,16 +36,18 @@ reference-model architecture diagram:**
 | Scoreboard                     | `check_byte`/`check_word`/`check_cond` in `tb/uart_tasks.v`, comparing DUT-observed outcomes against independently-computed expected values at each call site |
 | Reference model                   | `model_parity_bit` (see Section 2) plus, for the FIFO, a plain software reference queue implemented directly in `tb/fifo_tb.v` |
 
-**This is a single Verilog testbench file per DUT-under-test (plus a
-shared task library), not a multi-file class-based (UVM-style)
-environment.** That is a direct consequence of the toolchain, not a
-scope-cutting shortcut: Icarus Verilog has no SystemVerilog class
-support, and the assignment's own policy is to prefer open-source tools
-and to explicitly document when a requested feature needs a simulator
-unavailable in that flow (see "Known limitations," Section 5). The
-task-based structure above is the standard, well-understood plain-
-Verilog equivalent, and was already used successfully in this project's
-earlier phases.
+> [!NOTE]
+> **This is a single Verilog testbench file per DUT-under-test (plus a
+> shared task library), not a multi-file class-based (UVM-style)
+> environment.** That is a direct consequence of the toolchain, not a
+> scope-cutting shortcut: Icarus Verilog has no SystemVerilog class
+> support, and the assignment's own policy is to prefer open-source tools
+> and to explicitly document when a requested feature needs a simulator
+> unavailable in that flow (see "Known limitations," Section 5). The
+> task-based structure above is the standard, well-understood plain-
+> Verilog equivalent, and was already used successfully in this project's
+> earlier phases.
+
 
 ## 2. Independent reference models
 
@@ -92,11 +98,13 @@ Covered directly:
 
 ## 4. Lessons learned (real bugs found during this phase's development)
 
-Documented here in full, per this project's ongoing practice (see the
-earlier phases' documentation for the same practice) of recording actual
-development bugs rather than only presenting a final, idealized design.
-All were found by running the simulator and reading actual signal
-values/timestamps, not by inspection.
+> [!TIP]
+> Documented here in full, per this project's ongoing practice (see the
+> earlier phases' documentation for the same practice) of recording actual
+> development bugs rather than only presenting a final, idealized design.
+> All were found by running the simulator and reading actual signal
+> values/timestamps, not by inspection.
+
 
 1. **RX baud-divisor protection gap** (RTL bug): an early version of
    `uart_top.v` wired `uart_rx`'s timing input directly to the raw,
@@ -230,6 +238,10 @@ uart_core_tb      :  132 /  132 PASSED
 ------------------------------------
 TOTAL                : 2146 / 2146 PASSED
 ```
+
+<p align="center">
+  <img src="assets/terminal.svg" alt="Terminal: make regression" width="80%">
+</p>
 
 ## 6. Assertions
 

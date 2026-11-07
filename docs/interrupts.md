@@ -1,5 +1,9 @@
 # Interrupt Subsystem
 
+<p align="center"><img src="assets/header-interrupts.svg" alt="Interrupt Subsystem" width="100%"></p>
+
+<p align="center"><sub>[README](../README.md) · [Architecture](architecture.md) · [Registers](register_map.md) · [FIFO](fifo.md) · **Interrupts** · [Timing](timing.md) · [Verification](verification.md)</sub></p>
+
 All interrupt generation is centralized in one module, `rtl/uart_irq.v`.
 No other module in this project decides "should the `irq` pin be
 asserted" -- `uart_tx.v` and `uart_rx.v` only ever produce raw event
@@ -9,6 +13,10 @@ derived conditions it computes itself (overrun, threshold comparisons),
 into `uart_irq.v`'s inputs. This centralization is deliberate, per the
 assignment's explicit instruction not to scatter interrupt generation
 throughout unrelated modules.
+
+<p align="center">
+  <img src="assets/irq.svg" alt="Animated interrupt matrix" width="100%">
+</p>
 
 ## Architecture
 
@@ -38,9 +46,11 @@ literally.
 
 ## Two deliberately different behaviors, and why
 
-**This project does NOT use one uniform interrupt behavior for all 8
-sources.** That was a deliberate choice, not an oversight, made because
-the 8 sources genuinely fall into two different categories of thing:
+> [!IMPORTANT]
+> **This project does NOT use one uniform interrupt behavior for all 8
+> sources.** That was a deliberate choice, not an oversight, made because
+> the 8 sources genuinely fall into two different categories of thing:
+
 
 ### Category 1: sticky, edge-latched, write-1-to-clear (bits 0-3)
 
@@ -71,12 +81,14 @@ deliberately expose two different pieces of information ("is a break
 happening right now" vs. "has a break event occurred since I last
 acknowledged one") rather than duplicating the same state twice.
 
-**Simultaneous set-and-clear**: if a new event pulse arrives on the exact
-same cycle software writes a `1` to clear that same bit, the RTL gives
-the new event priority (the bit ends that cycle set to `1`, not `0`).
-This is the safer choice: software's write was clearing a *previous*
-occurrence it already knew about, and a brand new occurrence arriving in
-that same instant should not be silently swallowed.
+> [!TIP]
+> **Simultaneous set-and-clear**: if a new event pulse arrives on the exact
+> same cycle software writes a `1` to clear that same bit, the RTL gives
+> the new event priority (the bit ends that cycle set to `1`, not `0`).
+> This is the safer choice: software's write was clearing a *previous*
+> occurrence it already knew about, and a brand new occurrence arriving in
+> that same instant should not be silently swallowed.
+
 
 ### Category 2: live, level-mirrored, not clearable by writing (bits 4-7)
 
