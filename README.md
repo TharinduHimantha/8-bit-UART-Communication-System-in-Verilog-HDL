@@ -33,15 +33,11 @@ This repository implements a complete, CPU-ready UART (Universal Asynchronous Re
 
 ![Schematic diagram](<docs/schematic-diagram.png>)
 
-It has evolved across three documented phases:
 
-1. **Phase 1: Foundation** — Core TX/RX/loopback engines with clean-frame timing only.
-2. **Phase 2: Parity, framing, and break detection** — Configurable parity (`NONE` / `EVEN` / `ODD`), framing-error detection, and free-running break-condition detection, verified against two independent reference models.
-3. **Phase 3: FIFOs, Register Interface & Interrupts** *(current)* — Transforms the standalone serial engine into a complete memory-mapped CPU peripheral with 16-entry synchronous TX/RX FIFOs, per-byte sideband error tagging, runtime baud/parity/loopback reconfiguration, and a W1C (Write-1-to-Clear) interrupt controller.
 
-Every design decision — not just what was built, but *why*, and what alternatives were rejected — is documented in [`docs/architecture.md`](docs/architecture.md) and [`CHANGELOG.md`](CHANGELOG.md). Every test and claim of correctness is tracked in [`docs/verification.md`](docs/verification.md).
+For the real time YoSys simulation visit: https://digitaljs.tilk.eu/#5f3e7e647d347929a18dbd11ecd12d95ba588d162089a7ba57c0db6864906363
 
----
+
 
 ## Features
 
@@ -55,6 +51,16 @@ Every design decision — not just what was built, but *why*, and what alternati
 - **Two-flip-flop synchronizer** on the asynchronous `rx` input to mitigate metastability.
 - **Backwards-compatible core wrapper** — The Phase 2 pin-level `uart.v` wrapper is preserved intact so legacy pin-driven testbenches and integrations continue to run unmodified alongside `uart_top.v`.
 - **One-command regression** (`make regression`) running 8 testbenches and 3,372 self-checking assertions.
+
+<br>
+
+It has evolved across three documented phases:
+
+1. **Phase 1: Foundation** — Core TX/RX/loopback engines with clean-frame timing only.
+2. **Phase 2: Parity, framing, and break detection** — Configurable parity (`NONE` / `EVEN` / `ODD`), framing-error detection, and free-running break-condition detection, verified against two independent reference models.
+3. **Phase 3: FIFOs, Register Interface & Interrupts** *(current)* — Transforms the standalone serial engine into a complete memory-mapped CPU peripheral with 16-entry synchronous TX/RX FIFOs, per-byte sideband error tagging, runtime baud/parity/loopback reconfiguration, and a W1C (Write-1-to-Clear) interrupt controller.
+
+Every design decision — not just what was built, but *why*, and what alternatives were rejected — is documented in [`docs/architecture.md`](docs/architecture.md) and [`CHANGELOG.md`](early-phases/CHANGELOG.md). Every test and claim of correctness is tracked in [`docs/verification.md`](docs/verification.md).
 
 ---
 
