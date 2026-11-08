@@ -7,25 +7,24 @@
 //          irq). This is the module a larger system instantiates.
 //
 // TX AUTO-FEED (register interface -> TX FIFO -> uart_tx), timing explained:
-//   uart_fifo's rd_data is a REGISTERED output: asserting rd_en pops the
-//   FIFO, but the popped value only becomes visible on rd_data one cycle
-//   later (see uart_fifo.v). uart_tx, meanwhile, latches tx_data on the
-//   SAME cycle it accepts tx_start. Naively asserting tx_fifo_rd_en and
-//   tx_start on the same cycle would therefore feed uart_tx the PREVIOUS
-//   rd_data value, not the byte actually being popped this cycle -- an
-//   off-by-one that would silently transmit stale data.
+//   uart_fifo is first-word-fall-through (FWFT): rd_data is a combinational
+//   peek of the front entry and is valid BEFORE rd_en is asserted -- rd_en
+//   only advances the read pointer. uart_tx latches tx_data on the SAME
+//   cycle it accepts tx_start, so the FIFO pop and tx_start fire together
+//   (tx_pop_request drives both) and uart_tx always sees the byte that is
+//   actually being popped on that cycle.
 //
-//   The fix is a one-cycle pipeline: tx_fifo_rd_en pops the FIFO on cycle
-//   N; tx_start (driven from a registered copy of that pop request, not
-//   from the pop request itself) fires on cycle N+1, by which time
-//   rd_data correctly reflects the byte just popped. A one-cycle guard
-//   (tx_pop_in_flight, folded into the pop-request condition below)
-//   prevents a second pop from being issued during the single cycle where
-//   tx_busy has not yet risen to reflect the first pop's in-flight start
-//   request -- without it, two FIFO entries could be popped for what
-//   should be one transmitted frame. This was verified directly in
-//   simulation (tb/uart_core_tb.v's FIFO-to-TX streaming tests) before
-//   being trusted as correct.
+//   Double-pop guard: uart_tx raises tx_busy on the very edge that accepts
+//   tx_start, which removes tx_pop_request's enabling condition (!tx_busy)
+//   for the next cycle, so exactly one FIFO entry is popped per transmitted
+//   frame. This was verified directly in simulation (tb/uart_core_tb.v's
+//   FIFO-to-TX streaming tests).
+//
+//   History: an earlier, registered-read uart_fifo needed a one-cycle
+//   pipeline (pop on cycle N, tx_start on N+1) plus a tx_pop_in_flight
+//   guard to avoid transmitting stale data. The FWFT redesign made both
+//   unnecessary and they were removed -- see docs/fifo.md and
+//   docs/architecture.md Section 5.
 //
 // RX AUTO-FEED (uart_rx -> RX FIFO -> register interface): simpler, no
 // pipeline hazard -- rx_valid is already a clean one-cycle pulse

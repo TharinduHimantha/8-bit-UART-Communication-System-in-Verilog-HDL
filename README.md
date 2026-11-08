@@ -29,7 +29,7 @@ A complete, CPU-attachable, synthesizable **8-bit UART peripheral** in plain Ver
 ![Schematic diagram](docs/schematic-diagram.png)
 
 <div align = "center">
-<summary>Raw netlist view of the auto-generated Yosys / DigitalJS schematic of the design</summary>
+Raw netlist view of the auto-generated Yosys / DigitalJS schematic of the design
 </div>
 
 <br>
